@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luca - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Luca</a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="progetti.html">Progetti</a></li>
+                    <li><a href="servizi.html">Servizi</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <!-- Palline fluttuanti -->
+        <div class="floating-balls">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+        <div class="container">
+            <div class="home-content">
+                <div class="profile-container">
+                    <div class="profile-frame">
+                        <img src="immagini/ParigiLuca.jpg" alt="Luca a Parigi">
+                    </div>
+                </div>
+                <h1>Luca Bodini</h1>
+                <p>Ciao! Sono un ragazzo di 22 anni che studia informatica con l'obiettivo di diventare sistemista. Appassionato di tecnologia, basket e motori.</p>
+                <div class="cta-buttons">
+                    <a href="progetti.html" class="btn">Vedi i miei progetti</a>
+                    <a href="contatti.html" class="btn btn-outline">Contattami</a>
+                </div>
+            </div>
+        </div>
+        <!-- Freccia scroll down -->
+        <div class="scroll-down-arrow">
+            <div class="arrow"></div>
+        </div>
+    </section>
+
+    <section id="passioni">
+        <div class="container">
+            <div class="section-title">
+                <h2>Le Mie Passioni</h2>
+            </div>
+            <div class="passioni-content">
+                <div class="passione-card" data-passione="basket">
+                    <div class="passione-img">
+                        <img src="immagini/BasketLuca.jpg" alt="Luca che gioca a basket">
+                    </div>
+                    <div class="passione-text">
+                        <h3>Basket</h3>
+                        <p>Il basket è la mia passione sportiva. Mi piace giocare e seguire le partite della NBA.</p>
+                        <button class="btn-more">Scopri di più</button>
+                    </div>
+                </div>
+                <div class="passione-card" data-passione="informatica">
+                    <div class="passione-img">
+                        <img src="immagini/Informatica.jpg" alt="Codice di Luca Bodini">
+                    </div>
+                    <div class="passione-text">
+                        <h3>Informatica</h3>
+                        <p>Studio informatica con l'obiettivo di diventare sistemista. Mi affascina il mondo della tecnologia.</p>
+                        <button class="btn-more">Scopri di più</button>
+                    </div>
+                </div>
+                <div class="passione-card" data-passione="motori">
+                    <div class="passione-img">
+                        <img src="immagini/MotoLuca.jpg" alt="Luca con la moto">
+                    </div>
+                    <div class="passione-text">
+                        <h3>Motori</h3>
+                        <p>Sono un appassionato di motori, dalle auto sportive alle moto. Seguo con interesse il mondo delle corse.</p>
+                        <button class="btn-more">Scopri di più</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup per le passioni -->
+    <div id="popup-passione" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <div class="popup-body">
+                <!-- Il contenuto viene inserito dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Luca Bodini. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/bodini_luca" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:lucabodini.body@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
