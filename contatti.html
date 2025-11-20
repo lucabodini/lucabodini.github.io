@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luca - Contatti</title>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            
+            // Applica il tema IMMEDIATAMENTE
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            window.currentTheme = savedTheme;
+            
+            // Imposta lo stato del checkbox IMMEDIATAMENTE
+            document.addEventListener('DOMContentLoaded', function() {
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) {
+                    themeToggle.checked = savedTheme === 'dark';
+                }
+            });
+        })();
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -16,22 +33,33 @@
         <div class="shape shape-4"></div>
     </div>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">Luca</a>
-                <div class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="progetti.html">Progetti</a></li>
-                    <li><a href="servizi.html">Servizi</a></li>
-                    <li><a href="contatti.html" class="active">Contatti</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">Luca</a>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="progetti.html">Progetti</a></li>
+            <li><a href="servizi.html">Servizi</a></li>
+            <li><a href="contatti.html" class="active">Contatti</a></li>
+                <!-- Aggiungi questo li per il dark mode -->
+                <li class="dark-mode-toggle">
+                    <div class="theme-switch">
+                        <input type="checkbox" id="theme-toggle" class="theme-checkbox">
+                        <label for="theme-toggle" class="theme-label">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                            <span class="theme-ball"></span>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <section class="page-hero">
         <!-- Palline fluttuanti -->
@@ -89,7 +117,7 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Località</h3>
-                                <p>Disponibile per progetti in tutta Italia</p>
+                                <p>Tutta Italia</p>
                             </div>
                         </div>
                     </div>
@@ -127,7 +155,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Luca Bodini. Tutti i diritti riservati.</p>
+            <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
             <div class="social-links">
                 <a href="https://instagram.com/bodini_luca" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:lucabodini.body@gmail.com"><i class="fas fa-envelope"></i></a>

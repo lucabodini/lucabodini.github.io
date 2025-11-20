@@ -114,7 +114,7 @@ body {
     overflow: hidden;
 }
 
-.ball {
+.floating-balls .ball {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
@@ -122,7 +122,7 @@ body {
     bottom: -100px;
 }
 
-.ball:nth-child(1) {
+.floating-balls .ball:nth-child(1) {
     width: 40px;
     height: 40px;
     left: 10%;
@@ -130,7 +130,7 @@ body {
     animation-duration: 8s;
 }
 
-.ball:nth-child(2) {
+.floating-balls .ball:nth-child(2) {
     width: 60px;
     height: 60px;
     left: 25%;
@@ -138,7 +138,7 @@ body {
     animation-duration: 10s;
 }
 
-.ball:nth-child(3) {
+.floating-balls .ball:nth-child(3) {
     width: 30px;
     height: 30px;
     left: 50%;
@@ -146,7 +146,7 @@ body {
     animation-duration: 7s;
 }
 
-.ball:nth-child(4) {
+.floating-balls .ball:nth-child(4) {
     width: 50px;
     height: 50px;
     left: 70%;
@@ -154,7 +154,7 @@ body {
     animation-duration: 9s;
 }
 
-.ball:nth-child(5) {
+.floating-balls .ball:nth-child(5) {
     width: 35px;
     height: 35px;
     left: 85%;
@@ -162,7 +162,7 @@ body {
     animation-duration: 8s;
 }
 
-.ball:nth-child(6) {
+.floating-balls .ball:nth-child(6) {
     width: 45px;
     height: 45px;
     left: 40%;
@@ -170,7 +170,7 @@ body {
     animation-duration: 10s;
 }
 
-.ball:nth-child(7) {
+.floating-balls .ball:nth-child(7) {
     width: 55px;
     height: 55px;
     left: 60%;
@@ -178,7 +178,7 @@ body {
     animation-duration: 11s;
 }
 
-.ball:nth-child(8) {
+.floating-balls .ball:nth-child(8) {
     width: 25px;
     height: 25px;
     left: 20%;
@@ -328,7 +328,7 @@ body {
 
 /* Header e Navigazione */
 header {
-    background-color: white;
+    background-color: var(--card-bg);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
@@ -1272,3 +1272,957 @@ footer .container {
         height: 25px;
     }
 }
+/* Dark Mode Toggle - VERSIONE VISIBILE IMMEDIATAMENTE */
+.dark-mode-toggle {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    opacity: 1 !important; /* Forza visibilità */
+    visibility: visible !important; /* Forza visibilità */
+}
+
+.theme-checkbox {
+    display: none;
+}
+
+.theme-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
+    height: 34px;
+    background: linear-gradient(145deg, #667eea, #764ba2);
+    border-radius: 50px;
+    padding: 6px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.theme-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #2c3e50, #3498db);
+    opacity: 0;
+    border-radius: 50px;
+}
+
+/* Se dark mode è attivo, mostra lo sfondo scuro IMMEDIATAMENTE */
+[data-theme="dark"] .theme-label::before {
+    opacity: 1;
+}
+
+.theme-ball {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    top: 4px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Icone integrate nel pallino */
+.theme-ball::before,
+.theme-ball::after {
+    content: '';
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 12px;
+}
+
+/* Sole - visibile quando switch a sinistra (light mode) */
+.theme-ball::before {
+    content: '\f185';
+    color: #f39c12;
+}
+
+/* Luna - visibile quando switch a destra (dark mode) */
+.theme-ball::after {
+    content: '\f186';
+    color: #f1c40f;
+}
+
+/* POSIZIONE INIZIALE - Light mode (sole a sinistra) */
+.theme-ball {
+    left: 4px;
+    transform: translateX(0);
+}
+
+.theme-ball::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.theme-ball::after {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* POSIZIONE FINALE - Dark mode (luna a destra) */
+[data-theme="dark"] .theme-ball {
+    left: 4px;
+    transform: translateX(36px);
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+}
+
+[data-theme="dark"] .theme-ball::before {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+[data-theme="dark"] .theme-ball::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* TRANSIZIONI SOLO QUANDO ATTIVO */
+.theme-switch.animate .theme-ball {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.theme-switch.animate .theme-ball::before,
+.theme-switch.animate .theme-ball::after {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.theme-switch.animate .theme-label::before {
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Effetto hover */
+.theme-label:hover {
+    transform: scale(1.05);
+}
+
+.theme-label:hover .theme-ball {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Rimuovi le icone laterali */
+.theme-label i {
+    display: none;
+}
+
+/* Versione mobile */
+@media (max-width: 768px) {
+    .theme-label {
+        width: 60px;
+        height: 30px;
+    }
+    
+    .theme-ball {
+        width: 22px;
+        height: 22px;
+    }
+    
+    [data-theme="dark"] .theme-ball {
+        transform: translateX(26px);
+    }
+}
+/* Variabili CSS per Dark Mode */
+:root {
+    /* Light mode (default) */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --card-bg: white;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --nav-active-color: var(--secondary-color); /* Blu per light mode */
+}
+
+[data-theme="dark"] {
+    /* Dark mode */
+    --primary-color: #1a1a2e;
+    --secondary-color: #16213e;
+    --accent-color: #e74c3c;
+    --light-color: #2d2d44;
+    --dark-color: #0f3460;
+    --text-color: #ffffff;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --nav-active-color: #ffffff; /* Bianco per dark mode */
+}
+
+/* Applica le variabili */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Header e Navigazione */
+header {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+}
+
+.nav-links a {
+    color: var(--text-color);
+}
+
+/* Navigazione attiva - BIANCO in dark mode */
+.nav-links a.active {
+    color: var(--nav-active-color) !important;
+}
+
+.nav-links a.active::after {
+    background-color: var(--nav-active-color) !important;
+}
+
+.nav-links a:hover {
+    color: var(--nav-active-color) !important;
+}
+
+/* Card e sezioni */
+.passione-card,
+.project-card,
+.servizio-card,
+.cta-section,
+.contatti-form,
+.info-item {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+}
+
+.section-title h2 {
+    color: var(--primary-color);
+}
+
+.passione-text h3 {
+    color: var(--primary-color);
+}
+
+/* Hero sections */
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+}
+
+[data-theme="dark"] .page-hero {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--dark-color) 100%);
+}
+
+/* Sezioni con sfondo */
+[data-theme="dark"] #passioni,
+[data-theme="dark"] #servizi {
+    background-color: var(--bg-color);
+}
+
+[data-theme="dark"] #progetti,
+[data-theme="dark"] #contatti {
+    background-color: var(--light-color);
+}
+
+/* Footer */
+[data-theme="dark"] footer {
+    background-color: var(--dark-color);
+}
+
+/* Popup */
+[data-theme="dark"] .popup-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .popup-details {
+    background-color: var(--light-color);
+}
+
+/* Form */
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background-color: var(--light-color);
+    border-color: var(--dark-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: var(--secondary-color);
+}
+
+/* Bolle fluttuanti */
+[data-theme="dark"] .ball {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Freccia */
+[data-theme="dark"] .scroll-down-arrow .arrow {
+    border-right: 3px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+/* ICONE - Tutte bianche in dark mode */
+[data-theme="dark"] .servizio-icon,
+[data-theme="dark"] .project-icon,
+[data-theme="dark"] .info-item i,
+[data-theme="dark"] .servizio-features i,
+[data-theme="dark"] .popup-details i {
+    color: var(--text-color) !important;
+}
+
+/* Link contatti - Cambia colore in dark mode */
+[data-theme="dark"] .contact-details a {
+    color: #4fc3f7 !important; /* Blu chiaro visibile */
+}
+
+[data-theme="dark"] .contact-details a:hover {
+    color: #81d4fa !important; /* Blu ancora più chiaro */
+}
+
+/* Social links */
+[data-theme="dark"] .social-links a {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .social-links a:hover {
+    color: #4fc3f7 !important;
+}
+
+/* Pulsanti */
+[data-theme="dark"] .btn {
+    color: white !important;
+}
+
+[data-theme="dark"] .btn-outline {
+    color: white !important;
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .btn-more {
+    color: white !important;
+}
+
+/* Tags */
+[data-theme="dark"] .tag {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+/* Testi vari */
+[data-theme="dark"] .price-info,
+[data-theme="dark"] .contact-details p {
+    color: var(--text-color) !important;
+}
+/* CORREZIONE SCRITTE BLU IN DARK MODE */
+
+/* Titoli delle sezioni */
+[data-theme="dark"] .section-title h2,
+[data-theme="dark"] .passione-text h3,
+[data-theme="dark"] .project-card h3,
+[data-theme="dark"] .servizio-card h3,
+[data-theme="dark"] .info-item h3,
+[data-theme="dark"] .contatti-info h2,
+[data-theme="dark"] .contatti-form h2,
+[data-theme="dark"] .servizi-info h2,
+[data-theme="dark"] .cta-section h2 {
+    color: var(--text-color) !important;
+}
+
+/* Testi delle card e descrizioni */
+[data-theme="dark"] .passione-text p,
+[data-theme="dark"] .project-card p,
+[data-theme="dark"] .servizio-card p,
+[data-theme="dark"] .info-item p,
+[data-theme="dark"] .contatti-info p,
+[data-theme="dark"] .cta-section p,
+[data-theme="dark"] .servizio-features p,
+[data-theme="dark"] .popup-body p {
+    color: var(--text-color) !important;
+}
+
+/* Prezzi e info servizi */
+[data-theme="dark"] .price-info {
+    color: var(--text-color) !important;
+}
+
+/* Tags progetti */
+[data-theme="dark"] .tag {
+    color: var(--text-color) !important;
+    background-color: var(--light-color) !important;
+}
+
+/* Testi footer */
+[data-theme="dark"] footer p {
+    color: var(--text-color) !important;
+}
+
+/* Link email nel footer */
+[data-theme="dark"] .social-links a {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .social-links a:hover {
+    color: #4fc3f7 !important;
+}
+
+/* Testi form */
+[data-theme="dark"] .form-group label {
+    color: var(--text-color) !important;
+}
+
+/* Popup titoli e testi */
+[data-theme="dark"] .popup-body h2 {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .popup-details p {
+    color: var(--text-color) !important;
+}
+
+/* Close button popup */
+[data-theme="dark"] .close-popup {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .close-popup:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Testi hero */
+[data-theme="dark"] .home-content h1,
+[data-theme="dark"] .home-content p,
+[data-theme="dark"] .page-hero h1,
+[data-theme="dark"] .page-hero p {
+    color: var(--text-color) !important;
+}
+
+/* Forza colore testo per tutti gli elementi tranne quelli specifici */
+[data-theme="dark"] * {
+    color: var(--text-color);
+}
+
+/* Eccezioni - elementi che devono mantenere colori specifici */
+[data-theme="dark"] .btn,
+[data-theme="dark"] .btn-more,
+[data-theme="dark"] .contact-details a,
+[data-theme="dark"] .servizio-icon i,
+[data-theme="dark"] .project-icon i,
+[data-theme="dark"] .info-item i,
+[data-theme="dark"] .servizio-features i,
+[data-theme="dark"] .social-links a:hover,
+[data-theme="dark"] .contact-details a:hover,
+[data-theme="dark"] .close-popup:hover {
+    color: inherit !important;
+}
+
+/* Colori specifici per icone */
+[data-theme="dark"] .servizio-icon i,
+[data-theme="dark"] .project-icon i,
+[data-theme="dark"] .info-item i,
+[data-theme="dark"] .servizio-features i {
+    color: #4fc3f7 !important; /* Blu chiaro per icone */
+}
+
+/* Link contatti */
+[data-theme="dark"] .contact-details a {
+    color: #4fc3f7 !important;
+}
+
+[data-theme="dark"] .contact-details a:hover {
+    color: #81d4fa !important;
+}
+
+/* Pulsanti */
+[data-theme="dark"] .btn,
+[data-theme="dark"] .btn-more {
+    color: white !important;
+}
+/* CORREZIONE SCRITTE BLU NEI CONTATTI */
+[data-theme="dark"] .contact-details h3 {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .contact-item h3 {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .contact-methods h3 {
+    color: var(--text-color) !important;
+}
+/* Assicurati che la navigazione attiva funzioni */
+.nav-links a.active {
+    color: var(--nav-active-color) !important;
+}
+
+.nav-links a.active::after {
+    background-color: var(--nav-active-color) !important;
+}
+
+/* Dark mode specifico per la navigazione */
+[data-theme="dark"] .nav-links a.active {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .nav-links a.active::after {
+    background-color: #ffffff !important;
+}
+
+[data-theme="dark"] .nav-links a:hover {
+    color: #ffffff !important;
+}
+/* MENU MOBILE IN DARK MODE */
+[data-theme="dark"] .nav-links {
+    background-color: var(--card-bg) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+[data-theme="dark"] .nav-links a {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links a.active {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .nav-links a.active::after {
+    background-color: #ffffff !important;
+}
+
+/* Menu toggle icon in dark mode */
+[data-theme="dark"] .menu-toggle {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .menu-toggle:hover {
+    color: #ffffff !important;
+}
+
+/* Assicurati che il menu mobile abbia lo stile corretto */
+@media (max-width: 768px) {
+    .nav-links {
+        background-color: white;
+        box-shadow: var(--shadow);
+    }
+    
+    [data-theme="dark"] .nav-links {
+        background-color: var(--card-bg) !important;
+        border-top: 1px solid var(--light-color);
+    }
+    
+    [data-theme="dark"] .nav-links a {
+        color: var(--text-color) !important;
+        border-bottom: 1px solid var(--light-color);
+    }
+    
+    [data-theme="dark"] .nav-links a:last-child {
+        border-bottom: none;
+    }
+    
+    [data-theme="dark"] .nav-links a:hover,
+    [data-theme="dark"] .nav-links a.active {
+        color: #ffffff !important;
+        background-color: var(--dark-color);
+    }
+}
+/* ARCADE GAMES STYLES */
+#arcade-games {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+/* Game Container */
+.game-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 50px;
+    border: 2px solid var(--secondary-color);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.game-header h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Game Stats */
+.game-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Game Area */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Basket Court */
+.basket-court {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    border-radius: 15px;
+    border: 4px solid #654321;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .basket-court {
+    background: linear-gradient(135deg, #654321, #7a5230);
+    border-color: #543210;
+}
+
+/* Hoop */
+.hoop {
+    position: absolute;
+    top: 100px;
+    right: 150px;
+    transform: translateX(50%);
+}
+
+.rim {
+    width: 120px;
+    height: 8px;
+    background: #FFD700;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.rim::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 40px;
+    background: #FFD700;
+}
+
+.net {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 120px;
+    height: 80px;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%),
+        repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.2) 8px, rgba(255,255,255,0.2) 10px);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+}
+
+[data-theme="dark"] .net {
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%),
+        repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.1) 8px, rgba(255,255,255,0.1) 10px);
+}
+
+/* Basketball Game Ball - EMOJI VERSION */
+.basketball {
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    width: 80px;
+    height: 80px;
+    cursor: grab;
+    transition: transform 0.2s ease;
+    font-size: 80px;
+    user-select: none;
+    z-index: 10;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.basketball:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
+/* Animation for successful shot */
+@keyframes scoreBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+    40% { transform: translateY(-20px) scale(1.1); }
+    60% { transform: translateY(-10px) scale(1.05); }
+}
+
+.score-bounce {
+    animation: scoreBounce 0.6s ease;
+}
+
+/* Trail effect for ball movement */
+.ball-trail {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 165, 0, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* Game Instructions */
+.game-instructions {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.game-instructions h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.game-instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.game-instructions li {
+    padding: 8px 0;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 25px;
+}
+
+.game-instructions li::before {
+    content: '🎯';
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+/* Coming Soon Games */
+.coming-soon-games {
+    text-align: center;
+}
+
+.coming-soon-games h2 {
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.game-preview {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-preview:hover {
+    transform: translateY(-5px);
+}
+
+.preview-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.game-preview h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.game-preview p {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+.coming-soon-badge {
+    background: var(--secondary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Game States */
+.game-active .ball {
+    cursor: grab;
+}
+
+.game-active .ball:active {
+    cursor: grabbing;
+}
+
+/* Score Animation */
+@keyframes scorePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.score-pop {
+    animation: scorePop 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .game-stats {
+        justify-content: center;
+    }
+    
+    .basket-court {
+        height: 400px;
+    }
+    
+    .hoop {
+        right: 100px;
+    }
+    
+    .ball {
+        left: 100px;
+    }
+    
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 20px;
+    }
+    
+    .basket-court {
+        height: 300px;
+    }
+    
+    .hoop {
+        right: 50px;
+        top: 80px;
+    }
+    
+    .ball {
+        left: 50px;
+        bottom: 80px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .game-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+    /* Dark mode adjustments for emoji ball */
+    [data-theme="dark"] .basketball {
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)) 
+                brightness(0.9) 
+                contrast(1.1);
+    }
+
+    /* Ensure the court looks good in dark mode with emoji */
+    [data-theme="dark"] .basket-court {
+        background: linear-gradient(135deg, #654321, #7a5230);
+        border-color: #543210;
+    }

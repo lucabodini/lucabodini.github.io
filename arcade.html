@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luca - Arcade</title>
+    
+    <!-- Script per il tema -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            window.currentTheme = savedTheme;
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) {
+                    themeToggle.checked = savedTheme === 'dark';
+                }
+            });
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/arcade.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Luca</a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="progetti.html">Progetti</a></li>
+                    <li><a href="servizi.html">Servizi</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="arcade.html" class="active">Arcade</a></li>
+                    <li class="dark-mode-toggle">
+                        <div class="theme-switch">
+                            <input type="checkbox" id="theme-toggle" class="theme-checkbox">
+                            <label for="theme-toggle" class="theme-label">
+                                <i class="fas fa-sun"></i>
+                                <i class="fas fa-moon"></i>
+                                <span class="theme-ball"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="floating-balls">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+        <div class="container">
+            <h1>Arcade Games</h1>
+            <p>Divertiti con i miei minigiochi! Iniziamo con il basket 🏀</p>
+        </div>
+        <div class="scroll-down-arrow">
+            <div class="arrow"></div>
+        </div>
+    </section>
+
+    <section id="arcade-games">
+        <div class="container">
+            <!-- Gioco Basket -->
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🏀 Basket Challenge</h2>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <span class="stat-label">Punteggio:</span>
+                            <span id="score" class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Tempo:</span>
+                            <span id="timer" class="stat-value">60</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-area">
+                    <div class="basket-court">
+                        <div class="hoop" id="hoop">
+                            <div class="rim"></div>
+                            <div class="net"></div>
+                        </div>
+                        <div class="basketball" id="basketball">🏀</div>
+                    </div>
+                    
+                    <div class="game-controls">
+                        <button id="start-btn" class="btn game-btn">
+                            <i class="fas fa-play"></i> Inizia Partita
+                        </button>
+                        <button id="reset-btn" class="btn game-btn btn-outline">
+                            <i class="fas fa-redo"></i> Ricomincia
+                        </button>
+                    </div>
+
+                    <div class="game-instructions">
+                        <h3>Come giocare:</h3>
+                        <ul>
+                            <li>Clicca e trascina la palla per mirare</li>
+                            <li>Rilascia per tirare a canestro</li>
+                            <li>Ogni canestro vale 2 punti</li>
+                            <li>Hai 60 secondi per fare più punti possibile!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prossimi giochi -->
+            <div class="coming-soon-games">
+                <h2>Prossimamente...</h2>
+                <div class="games-grid">
+                    <div class="game-preview">
+                        <div class="preview-icon">🏎️</div>
+                        <h3>Racing Challenge</h3>
+                        <p>Corri contro il tempo sulla pista!</p>
+                        <span class="coming-soon-badge">Prossimamente</span>
+                    </div>
+                    <div class="game-preview">
+                        <div class="preview-icon">🎯</div>
+                        <h3>Target Practice</h3>
+                        <p>Mira e colpisci i bersagli!</p>
+                        <span class="coming-soon-badge">Prossimamente</span>
+                    </div>
+                    <div class="game-preview">
+                        <div class="preview-icon">🧠</div>
+                        <h3>Memory Game</h3>
+                        <p>Allena la tua memoria!</p>
+                        <span class="coming-soon-badge">Prossimamente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Luca Bodini. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/bodini_luca" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:lucabodini.body@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/arcade.js"></script>
+</body>
+</html>

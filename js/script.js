@@ -313,3 +313,59 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reinizializza dopo un breve delay per sicurezza
     setTimeout(initScrollArrows, 100);
 });
+
+// Dark Mode functionality - VERSIONE IMMEDIATA
+function initDarkMode() {
+    const themeSwitch = document.querySelector('.theme-switch');
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    if (themeSwitch && themeToggle) {
+        // Il checkbox è già stato impostato dallo script nell'head
+        
+        // Event listener per il toggle
+        themeToggle.addEventListener('change', function() {
+            const newTheme = this.checked ? 'dark' : 'light';
+            
+            // Abilita le animazioni
+            themeSwitch.classList.add('animate');
+            
+            // Cambia tema
+            window.changeTheme(newTheme);
+            
+            // Disabilita le animazioni dopo il completamento
+            setTimeout(() => {
+                themeSwitch.classList.remove('animate');
+            }, 400);
+        });
+    }
+}
+
+// Funzione per cambiare tema
+window.changeTheme = function(newTheme) {
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    window.currentTheme = newTheme;
+};
+
+// Inizializza quando il DOM è pronto
+document.addEventListener('DOMContentLoaded', function() {
+    initDarkMode();
+    setActiveNav();
+    // ... altro codice
+    // Highlight navigazione attiva
+function setActiveNav() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a:not(.dark-mode-toggle a)');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage || 
+           (currentPage === '' && linkPage === 'index.html') ||
+           (currentPage === 'index.html' && linkPage === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+});
