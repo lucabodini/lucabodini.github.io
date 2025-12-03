@@ -3,157 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luca - Home</title>
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            
-            // Applica il tema IMMEDIATAMENTE
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            window.currentTheme = savedTheme;
-            
-            // Imposta lo stato del checkbox IMMEDIATAMENTE
-            document.addEventListener('DOMContentLoaded', function() {
-                const themeToggle = document.getElementById('theme-toggle');
-                if (themeToggle) {
-                    themeToggle.checked = savedTheme === 'dark';
-                }
-            });
-        })();
-    </script>
+    <title>Luca Bodini | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Previeni flash del cursore di default durante il caricamento */
+        html, body, * {
+            cursor: none !important;
+        }
+    </style>
 </head>
-<body>
-    <!-- Background Animation -->
-    <div class="background-animation">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-    </div>
+<body class="loaded">
+    <!-- Custom Cursor Elements -->
+    <!-- Saranno creati da JavaScript -->
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">Luca</a>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="progetti.html">Progetti</a></li>
-                <li><a href="servizi.html">Servizi</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
-                <!-- Aggiungi questo li per il dark mode -->
-                <li class="dark-mode-toggle">
-                    <div class="theme-switch">
-                        <input type="checkbox" id="theme-toggle" class="theme-checkbox">
-                        <label for="theme-toggle" class="theme-label">
-                            <i class="fas fa-sun"></i>
-                            <i class="fas fa-moon"></i>
-                            <span class="theme-ball"></span>
-                        </label>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+   <!-- Navigation -->
+<header class="main-header">
+    <nav class="navbar">
+        <!-- LOGO A SINISTRA -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
+            </a>
+        </div>
+        
+        <!-- MENU A DESTRA -->
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
+            <li class="nav-item"><a href="servizi.html" class="nav-link">Servizi</a></li>
+            <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
+        </ul>
+        
+        <!-- HAMBURGER MENU (solo mobile) -->
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 </header>
-
-    <section id="home" class="hero">
-        <!-- Palline fluttuanti -->
-        <div class="floating-balls">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>
-        <div class="container">
-            <div class="home-content">
-                <div class="profile-container">
-                    <div class="profile-frame">
-                        <img src="immagini/ParigiLuca.jpg" alt="Luca a Parigi">
-                    </div>
-                </div>
-                <h1>Luca Bodini</h1>
-                <p>Ciao! Sono un ragazzo di 22 anni che studia informatica con l'obiettivo di diventare sistemista. Appassionato di tecnologia, basket e motori.</p>
-                <div class="cta-buttons">
-                    <a href="progetti.html" class="btn">Vedi i miei progetti</a>
-                    <a href="contatti.html" class="btn btn-outline">Contattami</a>
-                </div>
-            </div>
-        </div>
-        <!-- Freccia scroll down -->
-        <div class="scroll-down-arrow">
-            <div class="arrow"></div>
-        </div>
-    </section>
-
-    <section id="passioni">
-        <div class="container">
-            <div class="section-title">
-                <h2>Le Mie Passioni</h2>
-            </div>
-            <div class="passioni-content">
-                <div class="passione-card" data-passione="basket">
-                    <div class="passione-img">
-                        <img src="immagini/BasketLuca.jpg" alt="Luca che gioca a basket">
-                    </div>
-                    <div class="passione-text">
-                        <h3>Basket</h3>
-                        <p>Il basket è la mia passione sportiva. Mi piace giocare e seguire le partite della NBA.</p>
-                        <button class="btn-more">Scopri di più</button>
-                    </div>
-                </div>
-                <div class="passione-card" data-passione="informatica">
-                    <div class="passione-img">
-                        <img src="immagini/Informatica.jpg" alt="Codice di Luca Bodini">
-                    </div>
-                    <div class="passione-text">
-                        <h3>Informatica</h3>
-                        <p>Studio informatica con l'obiettivo di diventare sistemista. Mi affascina il mondo della tecnologia.</p>
-                        <button class="btn-more">Scopri di più</button>
-                    </div>
-                </div>
-                <div class="passione-card" data-passione="motori">
-                    <div class="passione-img">
-                        <img src="immagini/MotoLuca.jpg" alt="Luca con la moto">
-                    </div>
-                    <div class="passione-text">
-                        <h3>Motori</h3>
-                        <p>Sono un appassionato di motori, dalle auto sportive alle moto. Seguo con interesse il mondo delle corse.</p>
-                        <button class="btn-more">Scopri di più</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Popup per le passioni -->
-    <div id="popup-passione" class="popup">
-        <div class="popup-content">
-            <span class="close-popup">&times;</span>
-            <div class="popup-body">
-                <!-- Il contenuto viene inserito dinamicamente via JavaScript -->
-            </div>
+<!-- Video Background Hero -->
+<section class="hero-section">
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="assets/video/video-background.mp4" type="video/mp4">
+            <!-- Fallback image if video doesn't load -->
+            <img src="assets/images/hero-fallback.jpg" alt="Background fallback">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <div class="hero-content">
+        <h1 class="hero-title">Luca<br><span class="last-name">Bodini</span></h1>
+        <p class="hero-subtitle" id="typing-text">Designer & Creative Developer</p>
+        <div class="scroll-indicator">
+            <span></span>
         </div>
     </div>
+</section>
 
-    <footer>
+    <!-- Chi Sono Section -->
+    <section class="about-section section-padding">
         <div class="container">
-            <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
-            <div class="social-links">
-                <a href="https://instagram.com/bodini_luca" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:lucabodini.body@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="section-header">
+                <h2 class="section-title">Chi sono</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3 class="about-headline">Creatività, tecnologia e strategia</h3>
+                    <p class="about-description">
+                        Sono un designer e sviluppatore creativo con oltre 8 anni di esperienza nel creare esperienze digitali uniche e memorabili. 
+                        Mi concentro sull'intersezione tra design funzionale e innovazione tecnologica, creando soluzioni che non solo 
+                        soddisfano gli obiettivi del cliente ma superano le aspettative degli utenti.
+                    </p>
+                    <p class="about-description">
+                        Il mio approccio combina una profonda comprensione dei principi di design con competenze tecniche all'avanguardia, 
+                        permettendomi di realizzare progetti che sono esteticamente eccezionali, tecnicamente solidi e strategicamente efficaci.
+                    </p>
+                    <div class="about-cta">
+                        <a href="contatti.html" class="cta-button">Collaboriamo insieme</a>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="assets/images/ParigiLuca.jpg" alt="Luca Bodini" class="profile-image" loading="lazy">
+                        <div class="image-border"></div>
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progetti Section -->
+    <section class="projects-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Progetti in evidenza</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Scheda con questo sito -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder" style="background: linear-gradient(135deg, #00e5ff20, #7afcff30);">
+                            <span>Portfolio Site</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sito Portfolio Personale</h3>
+                        <p class="project-description">Design e sviluppo di questo sito portfolio con animazioni avanzate e design minimal</p>
+                        <div class="project-tags">
+                            <span class="tag">Web Design</span>
+                            <span class="tag">Development</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                    </div>
+                    <a href="progetti.html" class="project-link" aria-label="Vedi progetto Portfolio"></a>
+                </div>
+                
+                <!-- Schede "In arrivo" -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder" style="background: linear-gradient(135deg, #ff00aa20, #ff7afc30);">
+                            <span>In Arrivo</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Nuovo Progetto</h3>
+                        <p class="project-description">Prossimamente un nuovo progetto interessante</p>
+                        <div class="project-tags">
+                            <span class="tag">In Arrivo</span>
+                        </div>
+                    </div>
+                    <a href="progetti.html" class="project-link" aria-label="Progetto in arrivo"></a>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder" style="background: linear-gradient(135deg, #aa00ff20, #7a7afc30);">
+                            <span>In Arrivo</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Work in Progress</h3>
+                        <p class="project-description">Nuovo progetto in fase di sviluppo</p>
+                        <div class="project-tags">
+                            <span class="tag">In Arrivo</span>
+                        </div>
+                    </div>
+                    <a href="progetti.html" class="project-link" aria-label="Progetto in arrivo"></a>
+                </div>
+            </div>
+            
+            <div class="projects-cta">
+                <a href="progetti.html" class="cta-button large">
+                    Vedi tutti i miei progetti
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Luca Bodini</a>
+                    <p>Design & Development</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigazione</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="progetti.html">Progetti</a></li>
+                            <li><a href="servizi.html">Servizi</a></li>
+                            <li><a href="contatti.html">Contatti</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>Social</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:hello@lucabodini.com">hello@lucabodini.com</a></li>
+                            <li><a href="tel:+390123456789">+39 012 345 6789</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Luca Bodini. Tutti i diritti riservati.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/typing-animation.js"></script>
 </body>
 </html>

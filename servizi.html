@@ -3,177 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luca - Servizi</title>
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            
-            // Applica il tema IMMEDIATAMENTE
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            window.currentTheme = savedTheme;
-            
-            // Crea e applica lo stile per nascondere il checkbox finché non è pronto
-            const style = document.createElement('style');
-            style.textContent = `
-                .theme-switch {
-                    visibility: hidden;
-                }
-                .theme-switch.ready {
-                    visibility: visible;
-                }
-            `;
-            document.head.appendChild(style);
-        })();
-    </script>
+    <title>Servizi | Luca Bodini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Previeni flash del cursore di default durante il caricamento */
+        html, body, * {
+            cursor: none !important;
+        }
+        
+        /* Fix per il cursore bloccato in alto a sinistra */
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
-<body>
-    <!-- Background Animation -->
-    <div class="background-animation">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-    </div>
+<body class="loaded">
+    <!-- Custom Cursor Elements -->
+    <!-- Saranno creati da JavaScript -->
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">Luca</a>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="progetti.html">Progetti</a></li>
-            <li><a href="servizi.html" class="active">Servizi</a></li>
-            <li><a href="contatti.html">Contatti</a></li>
-                <!-- Aggiungi questo li per il dark mode -->
-                <li class="dark-mode-toggle">
-                    <div class="theme-switch">
-                        <input type="checkbox" id="theme-toggle" class="theme-checkbox">
-                        <label for="theme-toggle" class="theme-label">
-                            <i class="fas fa-sun"></i>
-                            <i class="fas fa-moon"></i>
-                            <span class="theme-ball"></span>
-                        </label>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <header class="main-header">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
+            </a>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
+            <li class="nav-item"><a href="servizi.html" class="nav-link active">Servizi</a></li>
+            <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
+        </ul>
+        
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 </header>
 
-    <section class="page-hero">
-        <!-- Palline fluttuanti -->
-        <div class="floating-balls">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>
+    <!-- Services Hero -->
+    <section class="page-hero section-padding">
         <div class="container">
-            <h1>I Miei Servizi</h1>
-            <p>Soluzioni web personalizzate per le tue esigenze</p>
-        </div>
-        <!-- Freccia scroll down -->
-        <div class="scroll-down-arrow">
-            <div class="arrow"></div>
+            <div class="page-hero-content">
+                <h1 class="page-hero-title">I miei servizi</h1>
+                <p class="page-hero-description">
+                    Soluzioni creative e tecniche per portare online la tua presenza e rafforzare la tua identità visiva.
+                </p>
+            </div>
         </div>
     </section>
 
-    <section id="servizi">
+    <!-- Services Grid -->
+    <section class="services-section section-padding">
         <div class="container">
-            <div class="servizi-content">
-                <div class="servizio-card">
-                    <div class="servizio-icon">
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-code"></i>
+                        <div class="icon-background"></div>
                     </div>
-                    <h3>Creazione Siti Web</h3>
-                    <p>Realizzo siti web moderni, responsive e personalizzati secondo le tue esigenze. Dai siti vetrina agli e-commerce.</p>
-                    <div class="servizio-features">
-                        <p><i class="fas fa-check"></i> Design responsive</p>
-                        <p><i class="fas fa-check"></i> Ottimizzazione SEO</p>
-                        <p><i class="fas fa-check"></i> Manutenzione continua</p>
-                    </div>
-                    <p class="price-info">Per informazioni sui prezzi, contattami</p>
-                    <a href="contatti.html" class="btn">Richiedi informazioni</a>
+                    <h3 class="service-title">Creazione di Siti Web</h3>
+                    <p class="service-description">
+                        Sviluppo di siti web moderni, responsive e performanti che offrono un'esperienza utente eccezionale su tutti i dispositivi.
+                    </p>
+                    <ul class="service-features">
+                        <li>Siti web responsive e mobile-friendly</li>
+                        <li>Design personalizzato e unico</li>
+                        <li>Ottimizzazione SEO e performance</li>
+                        <li>Integrazioni e funzionalità avanzate</li>
+                        <li>Manutenzione e aggiornamenti</li>
+                    </ul>
                 </div>
                 
-                <div class="servizio-card">
-                    <div class="servizio-icon">
-                        <i class="fas fa-paint-brush"></i>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                        <div class="icon-background"></div>
                     </div>
-                    <h3>Web Design</h3>
-                    <p>Creo interfacce utente intuitive e accattivanti con le ultime tecnologie web e trend di design.</p>
-                    <div class="servizio-features">
-                        <p><i class="fas fa-check"></i> UI/UX Design</p>
-                        <p><i class="fas fa-check"></i> Prototipazione</p>
-                        <p><i class="fas fa-check"></i> Design system</p>
-                    </div>
-                    <p class="price-info">Per informazioni sui prezzi, contattami</p>
-                    <a href="contatti.html" class="btn">Richiedi informazioni</a>
+                    <h3 class="service-title">Creazione di Loghi</h3>
+                    <p class="service-description">
+                        Design di loghi unici e memorabili che rappresentano perfettamente la tua identità aziendale e si distinguono nel mercato.
+                    </p>
+                    <ul class="service-features">
+                        <li>Design logo personalizzato</li>
+                        <li>Varie proposte creative</li>
+                        <li>File in diversi formati (vector, PNG, JPG)</li>
+                        <li>Guide all'utilizzo del logo</li>
+                        <li>Applicazioni su vari supporti</li>
+                    </ul>
                 </div>
                 
-                <div class="servizio-card">
-                    <div class="servizio-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brush"></i>
+                        <div class="icon-background"></div>
                     </div>
-                    <h3>Design Responsive</h3>
-                    <p>Siti che si adattano perfettamente a qualsiasi dispositivo: desktop, tablet e smartphone.</p>
-                    <div class="servizio-features">
-                        <p><i class="fas fa-check"></i> Mobile-first</p>
-                        <p><i class="fas fa-check"></i> Cross-browser</p>
-                        <p><i class="fas fa-check"></i> Performance ottimizzate</p>
+                    <h3 class="service-title">Servizi di Grafica</h3>
+                    <p class="service-description">
+                        Design grafico professionale per materiali stampati e digitali che comunicano efficacemente il tuo messaggio.
+                    </p>
+                    <ul class="service-features">
+                        <li>Volantini e brochure</li>
+                        <li>Biglietti da visita</li>
+                        <li>Banner e grafiche per social media</li>
+                        <li>Presentazioni aziendali</li>
+                        <li>Materiali marketing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Il mio processo di lavoro</h2>
+                <div class="title-line"></div>
+                <p class="section-description">
+                    Un approccio strutturato in 4 fasi che garantisce risultati eccezionali
+                </p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title">Consulenza</h3>
+                    <p class="step-description">
+                        Analisi delle tue esigenze, obiettivi e pubblico di riferimento per definire la direzione del progetto.
+                    </p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title">Progettazione</h3>
+                    <p class="step-description">
+                        Sviluppo della soluzione visiva e funzionale attraverso bozze, mockup e prototipi.
+                    </p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title">Sviluppo</h3>
+                    <p class="step-description">
+                        Realizzazione tecnica del progetto con attenzione ai dettagli, performance e qualità.
+                    </p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3 class="step-title">Consegna</h3>
+                    <p class="step-description">
+                        Delivery del progetto completo, formazione e supporto post-consegna.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Pronto a realizzare il tuo progetto?</h2>
+                <p class="cta-description">
+                    Contattami per discutere di come possiamo collaborare per raggiungere i tuoi obiettivi.
+                </p>
+                <a href="contatti.html" class="cta-button large">
+                    Iniziamo una conversazione
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Luca Bodini</a>
+                    <p>Design & Development</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigazione</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="progetti.html">Progetti</a></li>
+                            <li><a href="servizi.html">Servizi</a></li>
+                            <li><a href="contatti.html">Contatti</a></li>
+                        </ul>
                     </div>
-                    <p class="price-info">Per informazioni sui prezzi, contattami</p>
-                    <a href="contatti.html" class="btn">Richiedi informazioni</a>
+                    
+                    <div class="footer-social">
+                        <h4>Social</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:hello@lucabodini.com">hello@lucabodini.com</a></li>
+                            <li><a href="tel:+390123456789">+39 012 345 6789</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
-            <div class="servizi-info">
-                <h2>Perché Scegliere Me?</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <i class="fas fa-rocket"></i>
-                        <h3>Moderno e Aggiornato</h3>
-                        <p>Utilizzo le ultime tecnologie e trend del settore</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-heart"></i>
-                        <h3>Passione e Dedizione</h3>
-                        <p>Metto passione in ogni progetto che realizzo</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-comments"></i>
-                        <h3>Comunicazione Trasparente</h3>
-                        <p>Mantengo un costante dialogo con il cliente</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Qualità Garantita</h3>
-                        <p>Ogni lavoro viene testato e ottimizzato</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
-            <div class="social-links">
-                <a href="https://instagram.com/bodini_luca" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:lucabodini.body@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Luca Bodini. Tutti i diritti riservati.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

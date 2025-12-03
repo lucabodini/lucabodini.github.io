@@ -3,111 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luca - Contatti</title>
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            
-            // Applica il tema IMMEDIATAMENTE
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            window.currentTheme = savedTheme;
-            
-            // Imposta lo stato del checkbox IMMEDIATAMENTE
-            document.addEventListener('DOMContentLoaded', function() {
-                const themeToggle = document.getElementById('theme-toggle');
-                if (themeToggle) {
-                    themeToggle.checked = savedTheme === 'dark';
-                }
-            });
-        })();
-    </script>
+    <title>Contatti | Luca Bodini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Previeni flash del cursore di default durante il caricamento */
+        html, body, * {
+            cursor: none !important;
+        }
+        
+        /* Fix per il cursore bloccato in alto a sinistra */
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
-<body>
-    <!-- Background Animation -->
-    <div class="background-animation">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-    </div>
+<body class="loaded">
+    <!-- Custom Cursor Elements -->
+    <!-- Saranno creati da JavaScript -->
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">Luca</a>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="progetti.html">Progetti</a></li>
-            <li><a href="servizi.html">Servizi</a></li>
-            <li><a href="contatti.html" class="active">Contatti</a></li>
-                <!-- Aggiungi questo li per il dark mode -->
-                <li class="dark-mode-toggle">
-                    <div class="theme-switch">
-                        <input type="checkbox" id="theme-toggle" class="theme-checkbox">
-                        <label for="theme-toggle" class="theme-label">
-                            <i class="fas fa-sun"></i>
-                            <i class="fas fa-moon"></i>
-                            <span class="theme-ball"></span>
-                        </label>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <header class="main-header">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
+            </a>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
+            <li class="nav-item"><a href="servizi.html" class="nav-link">Servizi</a></li>
+            <li class="nav-item"><a href="contatti.html" class="nav-link active">Contatti</a></li>
+        </ul>
+        
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 </header>
 
-    <section class="page-hero">
-        <!-- Palline fluttuanti -->
-        <div class="floating-balls">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>
+    <!-- Contact Hero -->
+    <section class="page-hero section-padding">
         <div class="container">
-            <h1>Contattami</h1>
-            <p>Pronto a realizzare il tuo prossimo progetto</p>
-        </div>
-        <!-- Freccia scroll down -->
-        <div class="scroll-down-arrow">
-            <div class="arrow"></div>
+            <div class="page-hero-content">
+                <h1 class="page-hero-title">Contattami</h1>
+                <p class="page-hero-description">
+                    Hai un progetto in mente o vuoi semplicemente fare una chiacchierata? Scrivimi e risponderò al più presto.
+                </p>
+            </div>
         </div>
     </section>
 
-    <section id="contatti">
+    <!-- Contact Section -->
+    <section class="contact-section section-padding">
         <div class="container">
-            <div class="contatti-content">
-                <div class="contatti-info">
-                    <h2>Mettiamoci in Contatto</h2>
-                    <p>Sei interessato ai miei servizi o vuoi semplicemente fare due chiacchiere? Contattami attraverso uno dei canali qui sotto!</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="contact-title">Informazioni di contatto</h2>
+                    <p class="contact-description">
+                        Sono sempre aperto a nuove collaborazioni e sfide creative. Non esitare a contattarmi per discutere 
+                        del tuo progetto o per qualsiasi domanda.
+                    </p>
                     
-                    <div class="contact-methods">
+                    <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:hello@lucabodini.com">hello@lucabodini.com</a>
                             </div>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fab fa-instagram"></i>
+                                <i class="fas fa-phone"></i>
                             </div>
-                            <div class="contact-details">
-                                <h3>Instagram</h3>
-                                <a href="https://instagram.com/bodini_luca" target="_blank">@bodini_luca</a>
+                            <div class="contact-text">
+                                <h4>Telefono</h4>
+                                <a href="tel:+390123456789">+39 012 345 6789</a>
                             </div>
                         </div>
                         
@@ -115,54 +97,196 @@
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="contact-details">
-                                <h3>Località</h3>
-                                <p>Tutta Italia</p>
+                            <div class="contact-text">
+                                <h4>Ubicazione</h4>
+                                <p>Milano, Italia</p>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h3>Social</h3>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contatti-form">
-                    <h2>Inviami un Messaggio</h2>
-                    <form id="contactForm">
+                <div class="contact-form-container">
+                    <h2 class="contact-title">Invia un messaggio</h2>
+                    
+                    <form id="contact-form" class="contact-form">
                         <div class="form-group">
-                            <label for="name">Nome</label>
+                            <label for="name">Nome e cognome *</label>
                             <input type="text" id="name" name="name" required>
+                            <div class="form-error" id="name-error"></div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
+                            <div class="form-error" id="email-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Oggetto</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <select id="subject" name="subject">
+                                <option value="">Seleziona un'opzione</option>
+                                <option value="website">Sito Web</option>
+                                <option value="logo">Logo Design</option>
+                                <option value="graphic">Servizi Grafici</option>
+                                <option value="collaboration">Collaborazione</option>
+                                <option value="other">Altro</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Messaggio *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <div class="form-error" id="message-error"></div>
                         </div>
                         
-                        <button type="submit" class="btn btn-full">Invia Messaggio</button>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">
+                                Accetto la <a href="#">Privacy Policy</a> e autorizzo il trattamento dei miei dati personali *
+                            </label>
+                            <div class="form-error" id="privacy-error"></div>
+                        </div>
+                        
+                        <button type="submit" class="cta-button full-width">
+                            Invia messaggio
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        
+                        <div id="form-success" class="form-success">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Grazie per il tuo messaggio! Ti risponderò al più presto.</p>
+                        </div>
+                        
+                        <div id="form-error" class="form-error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Si è verificato un errore. Riprova più tardi o contattami direttamente via email.</p>
+                        </div>
                     </form>
+                    
+                    <div class="form-note">
+                        <p><small>* I campi contrassegnati con asterisco sono obbligatori</small></p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding">
         <div class="container">
-            <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
-            <div class="social-links">
-                <a href="https://instagram.com/bodini_luca" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:lucabodini.body@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="section-header">
+                <h2 class="section-title">Domande frequenti</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quali sono le tempistiche medie per un sito web?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Un sito web base richiede generalmente 2-4 settimane, mentre progetti più complessi possono richiedere 4-8 settimane. Le tempistiche precise vengono definite durante la fase di consulenza iniziale.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quanto costa un logo?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Il costo di un logo dipende dalla complessità del progetto e dalle esigenze specifiche. Offro pacchetti completi che includono diverse proposte creative e file in tutti i formati necessari.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Fornisci supporto post-consegna?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sì, offro supporto tecnico post-consegna per siti web e assistenza per l'utilizzo dei materiali grafici. Possiamo definire insieme un piano di supporto che si adatti alle tue esigenze.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Qual è il tuo processo di pagamento?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Generalmente lavoro con un pagamento iniziale del 50% per avviare il progetto e il saldo finale alla consegna. Per progetti più piccoli, posso considerare pagamenti in un'unica soluzione.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Luca Bodini</a>
+                    <p>Design & Development</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigazione</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="progetti.html">Progetti</a></li>
+                            <li><a href="servizi.html">Servizi</a></li>
+                            <li><a href="contatti.html">Contatti</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>Social</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:hello@lucabodini.com">hello@lucabodini.com</a></li>
+                            <li><a href="tel:+390123456789">+39 012 345 6789</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Luca Bodini. Tutti i diritti riservati.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

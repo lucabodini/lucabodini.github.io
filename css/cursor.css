@@ -1,0 +1,103 @@
+/* ============================================
+   CUSTOM CURSOR STYLES - VERSIONE FINALE FUNZIONANTE
+   ============================================ */
+
+/* Nascondi COMPLETAMENTE il cursore di default */
+html, body, * {
+    cursor: none !important;
+}
+
+/* Elementi base del cursore - NON sono visibili di default */
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* Quando il cursore è attivo, mostra gli elementi */
+body.has-custom-cursor .cursor-dot,
+body.has-custom-cursor .cursor-ring {
+    opacity: 1;
+}
+
+/* PUNTINO del cursore (piccolo, segue immediatamente) */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 100000;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    mix-blend-mode: difference;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* CERCHIO del cursore (grande, segue con ritardo) */
+.cursor-ring {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    z-index: 99999;
+    transition: 
+        width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.01s linear;
+    mix-blend-mode: difference;
+}
+
+/* Effetto glass per browser moderni */
+@supports (backdrop-filter: blur(4px)) {
+    .cursor-ring {
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* EFFETTO HOVER su elementi cliccabili */
+.cursor-ring.hover {
+    width: 65px;
+    height: 65px;
+    background-color: rgba(0, 229, 255, 0.1);
+    border-color: rgba(0, 229, 255, 0.4);
+}
+
+.cursor-dot.hover {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* EFFETTO CLICK */
+.cursor-ring.click {
+    transform: translate(-50%, -50%) scale(0.85);
+}
+
+.cursor-dot.click {
+    transform: translate(-50%, -50%) scale(0.6);
+}
+
+/* Per dispositivi touch, ripristina il cursore normale */
+@media (hover: none) and (pointer: coarse) {
+    html, body, * {
+        cursor: auto !important;
+    }
+    
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+    
+    body.has-custom-cursor {
+        cursor: auto !important;
+    }
+}
