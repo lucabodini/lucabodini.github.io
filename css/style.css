@@ -1194,3 +1194,174 @@ a {
     backdrop-filter: blur(6px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(6px) saturate(160%) !important;
 }
+/* ============================================
+   PROJECTS FILTER
+   ============================================ */
+
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: none;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background-color: rgba(0, 229, 255, 0.15);
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.4);
+}
+
+/* Grid per pagina progetti completa */
+.projects-page-section .full-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card.full {
+    min-height: 400px;
+}
+
+.project-category {
+    font-size: 0.875rem;
+    color: #00e5ff;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.project-cta {
+    margin-top: 1.5rem;
+}
+
+.project-details-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #00e5ff;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.project-details-link.current {
+    color: #7afcff;
+    font-weight: 600;
+}
+
+.project-details-link i {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.project-details-link:hover i {
+    transform: translateX(3px);
+}
+/* ============================================
+   PROCESS STEPS
+   ============================================ */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.process-step {
+    padding: 2rem;
+    background-color: rgba(20, 20, 22, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover {
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.step-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(0, 229, 255, 0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.step-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+.faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.faq-question i {
+    color: #00e5ff;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.faq-answer p {
+    padding-top: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
