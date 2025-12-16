@@ -1,9 +1,15 @@
 // ============================================
-// MAIN JAVASCRIPT - VERSIONE FINALE
+// MAIN JAVASCRIPT - VERSIONE COMPLETA
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Sito Luca Bodini - Inizializzazione...');
+    
+    // Controllo per dispositivi touch
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.documentElement.classList.add('touch-device');
+        console.log('Dispositivo touch rilevato');
+    }
     
     // Inizializza il menu mobile
     initMobileMenu();
@@ -26,31 +32,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-// Menu mobile
+// ============================================
+// MENU MOBILE CON OVERLAY
+// ============================================
+
 function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const body = document.body;
     
     if (!hamburger || !navMenu) return;
     
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navMenu.classList.toggle('active');
+    function openMenu() {
+        hamburger.classList.add('active');
+        navMenu.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
+        body.classList.add('menu-open');
+    }
+    
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+    
+    function toggleMenu() {
+        if (navMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+    
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
     });
     
-    // Chiudi menu al click sui link
+    // Chiudi menu cliccando sui link
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            closeMenu();
         });
+    });
+    
+    // Chiudi menu cliccando sull'overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function() {
+            closeMenu();
+        });
+    }
+    
+    // Chiudi menu con tasto ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMenu();
+        }
     });
 }
 
-// FAQ accordion
+// ============================================
+// FAQ ACCORDION
+// ============================================
+
 function initFAQAccordion() {
     const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (!faqItems.length) return;
     
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
@@ -69,7 +120,10 @@ function initFAQAccordion() {
     });
 }
 
-// Filtri progetti
+// ============================================
+// FILTRI PROGETTI
+// ============================================
+
 function initProjectFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card[data-category]');
@@ -109,7 +163,10 @@ function initProjectFilter() {
     });
 }
 
-// Video background con fallback
+// ============================================
+// VIDEO BACKGROUND
+// ============================================
+
 function initVideoBackground() {
     const video = document.getElementById('hero-video');
     if (!video) return;
@@ -135,7 +192,10 @@ function initVideoBackground() {
     }
 }
 
-// Smooth scrolling per anchor links
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
+
 function initSmoothScrolling() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
     

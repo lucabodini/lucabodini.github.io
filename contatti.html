@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti | Luca Bodini</title>
+    <title>Contatti | Luca Bodini Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,74 +11,60 @@
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Previeni flash del cursore di default durante il caricamento */
         html, body, * {
             cursor: none !important;
-        }
-        
-        /* Fix per il cursore bloccato in alto a sinistra */
-        body {
-            overflow-x: hidden;
         }
     </style>
 </head>
 <body class="loaded">
-    <!-- Custom Cursor Elements -->
-    <!-- Saranno creati da JavaScript -->
+    <header class="main-header">
+        <div class="container-nav">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
+                    <li class="nav-item"><a href="servizi.html" class="nav-link">Servizi</a></li>
+                    <li class="nav-item"><a href="contatti.html" class="nav-link active">Contatti</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<header class="main-header">
-    <div class="container-nav">
-        <nav class="navbar">
-            <!-- LOGO spostato 1cm a destra -->
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
-                </a>
-            </div>
-            
-            <!-- MENU spostato 1cm a sinistra -->
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
-                <li class="nav-item"><a href="servizi.html" class="nav-link">Servizi</a></li>
-                <li class="nav-item"><a href="contatti.html" class="nav-link active">Contatti</a></li>
-            </ul>
-            
-            <!-- HAMBURGER MENU (solo mobile) -->
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </div>
-</header>
+    <!-- Overlay per menu mobile -->
+    <div class="menu-overlay"></div>
 
-    <!-- Contact Hero -->
-    <section class="page-hero section-padding">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
-                <h1 class="page-hero-title">Contattami</h1>
-                <p class="page-hero-description">
-                    Hai un progetto in mente o vuoi semplicemente fare una chiacchierata? Scrivimi e risponderò al più presto.
-                </p>
+                <h1 class="page-hero-title">Contatti</h1>
+                <p class="page-hero-description">Hai un progetto in mente? Parliamone! Sono sempre aperto a nuove collaborazioni e sfide creative.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section section-padding">
+    <!-- Contact Content -->
+    <section class="about-section section-padding">
         <div class="container">
             <div class="contact-grid">
+                <!-- Contact Info -->
                 <div class="contact-info">
-                    <h2 class="contact-title">Informazioni di contatto</h2>
-                    <p class="contact-description">
-                        Sono sempre aperto a nuove collaborazioni e sfide creative. Non esitare a contattarmi per discutere 
-                        del tuo progetto o per qualsiasi domanda.
-                    </p>
+                    <h2 class="contact-title">Mettiamoci in contatto</h2>
+                    <p class="contact-description">Che tu abbia bisogno di un nuovo sito web, di una consulenza o semplicemente di una chiacchierata sul mondo del design e sviluppo, risponderò al più presto.</p>
                     
                     <div class="contact-details">
-                        <!-- Email -->
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
@@ -89,73 +75,65 @@
                             </div>
                         </div>
                         
-                        <!-- Instagram -->
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fab fa-instagram"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="contact-text">
-                                <h4>Instagram</h4>
-                                <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener">@bodini_luca</a>
+                                <h4>Località</h4>
+                                <p>Milano, Italia</p>
                             </div>
                         </div>
                         
-                        <!-- GitHub -->
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fab fa-github"></i>
+                                <i class="fas fa-clock"></i>
                             </div>
                             <div class="contact-text">
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/lucabodini" target="_blank" rel="noopener">lucabodini</a>
-                            </div>
-                        </div>
-                        
-                        <!-- LinkedIn -->
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>LinkedIn</h4>
-                                <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener">Luca Bodini</a>
+                                <h4>Disponibilità</h4>
+                                <p>Lunedì - Venerdì: 9:00 - 18:00</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="contact-social">
-                        <h3>Social</h3>
+                        <h3>Seguimi</h3>
                         <div class="social-links">
-                            <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-form-container">
-                    <h2 class="contact-title">Invia un messaggio</h2>
-                    
-                    <form id="contact-form" class="contact-form">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Nome e cognome *</label>
+                            <label for="name">Nome e Cognome *</label>
                             <input type="text" id="name" name="name" required>
-                            <div class="form-error" id="name-error"></div>
+                            <div class="form-error" id="nameError"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
-                            <div class="form-error" id="email-error"></div>
+                            <div class="form-error" id="emailError"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Oggetto</label>
                             <select id="subject" name="subject">
                                 <option value="">Seleziona un'opzione</option>
-                                <option value="website">Sito Web</option>
-                                <option value="logo">Logo Design</option>
-                                <option value="graphic">Servizi Grafici</option>
+                                <option value="web-design">Web Design</option>
+                                <option value="development">Sviluppo Web</option>
+                                <option value="consulting">Consulenza</option>
                                 <option value="collaboration">Collaborazione</option>
                                 <option value="other">Altro</option>
                             </select>
@@ -164,15 +142,16 @@
                         <div class="form-group">
                             <label for="message">Messaggio *</label>
                             <textarea id="message" name="message" rows="6" required></textarea>
-                            <div class="form-error" id="message-error"></div>
+                            <div class="form-error" id="messageError"></div>
                         </div>
                         
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="privacy" name="privacy" required>
                             <label for="privacy">
-                                Accetto la <a href="#">Privacy Policy</a> e autorizzo il trattamento dei miei dati personali *
+                                Acconsento al trattamento dei miei dati personali in accordo con la 
+                                <a href="#" target="_blank">Privacy Policy</a> *
                             </label>
-                            <div class="form-error" id="privacy-error"></div>
+                            <div class="form-error" id="privacyError"></div>
                         </div>
                         
                         <button type="submit" class="cta-button full-width">
@@ -180,27 +159,29 @@
                             <i class="fas fa-paper-plane"></i>
                         </button>
                         
-                        <div id="form-success" class="form-success">
+                        <div class="form-success" id="successMessage" style="display: none;">
                             <i class="fas fa-check-circle"></i>
-                            <p>Grazie per il tuo messaggio! Ti risponderò al più presto.</p>
+                            <div>
+                                <strong>Messaggio inviato con successo!</strong>
+                                <p>Ti risponderò al più presto. Grazie per avermi contattato.</p>
+                            </div>
                         </div>
                         
-                        <div id="form-error" class="form-error-message">
+                        <div class="form-error-message" id="errorMessage" style="display: none;">
                             <i class="fas fa-exclamation-circle"></i>
-                            <p>Si è verificato un errore. Riprova più tardi o contattami direttamente via email.</p>
+                            <div>
+                                <strong>Si è verificato un errore</strong>
+                                <p>Riprova più tardi o contattami direttamente via email.</p>
+                            </div>
                         </div>
                     </form>
-                    
-                    <div class="form-note">
-                        <p><small>* I campi contrassegnati con asterisco sono obbligatori</small></p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section section-padding">
+    <section class="projects-section section-padding">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Domande frequenti</h2>
@@ -210,41 +191,31 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Quali sono le tempistiche medie per un sito web?</h3>
+                        <h3>Quali sono i tempi di realizzazione di un sito web?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Un sito web base richiede generalmente 2-4 settimane, mentre progetti più complessi possono richiedere 4-8 settimane. Le tempistiche precise vengono definite durante la fase di consulenza iniziale.</p>
+                        <p>I tempi variano in base alla complessità del progetto. Un sito vetrina semplice richiede circa 2-3 settimane, mentre progetti più complessi come e-commerce o web app possono richiedere 1-3 mesi. Durante la fase di discovery definiremo insieme una timeline precisa.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Quanto costa un logo?</h3>
+                        <h3>Offrite servizi di manutenzione dopo il lancio?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Il costo di un logo dipende dalla complessità del progetto e dalle esigenze specifiche. Offro pacchetti completi che includono diverse proposte creative e file in tutti i formati necessari.</p>
+                        <p>Sì, offro piani di manutenzione che includono aggiornamenti di sicurezza, backup regolari, monitoraggio delle performance e supporto tecnico. Possiamo trovare insieme la soluzione più adatta alle tue esigenze.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Fornisci supporto post-consegna?</h3>
+                        <h3>Lavorate solo su progetti completi o anche su consulenze?</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sì, offro supporto tecnico post-consegna per siti web e assistenza per l'utilizzo dei materiali grafici. Possiamo definire insieme un piano di supporto che si adatti alle tue esigenze.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Qual è il tuo processo di pagamento?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Generalmente lavoro con un pagamento iniziale del 50% per avviare il progetto e il saldo finale alla consegna. Per progetti più piccoli, posso considerare pagamenti in un'unica soluzione.</p>
+                        <p>Offro entrambi i servizi. Posso seguire un progetto dall'inizio alla fine, ma anche fornire consulenza su progetti esistenti, audit di siti web, o coaching per team interni.</p>
                     </div>
                 </div>
             </div>
@@ -302,7 +273,7 @@
     <!-- Scripts -->
     <script src="js/cursor.js"></script>
     <script src="js/transitions.js"></script>
-    <script src="js/form-validation.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/form-validation.js"></script>
 </body>
 </html>

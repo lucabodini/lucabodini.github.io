@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progetti | Luca Bodini</title>
+    <title>Progetti | Luca Bodini Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,294 +11,194 @@
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Previeni flash del cursore di default durante il caricamento */
         html, body, * {
             cursor: none !important;
-        }
-        
-        /* Fix per il cursore bloccato in alto a sinistra */
-        body {
-            overflow-x: hidden;
         }
     </style>
 </head>
 <body class="loaded">
-    <!-- Custom Cursor Elements -->
-    <!-- Saranno creati da JavaScript -->
+    <header class="main-header">
+        <div class="container-nav">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="progetti.html" class="nav-link active">Progetti</a></li>
+                    <li class="nav-item"><a href="servizi.html" class="nav-link">Servizi</a></li>
+                    <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<header class="main-header">
-    <div class="container-nav">
-        <nav class="navbar">
-            <!-- LOGO spostato 1cm a destra -->
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
-                </a>
-            </div>
-            
-            <!-- MENU spostato 1cm a sinistra -->
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="progetti.html" class="nav-link active">Progetti</a></li>
-                <li class="nav-item"><a href="servizi.html" class="nav-link">Servizi</a></li>
-                <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
-            </ul>
-            
-            <!-- HAMBURGER MENU (solo mobile) -->
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </div>
-</header>
-    <!-- Projects Hero -->
-    <section class="page-hero section-padding">
+    <!-- Overlay per menu mobile -->
+    <div class="menu-overlay"></div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
                 <h1 class="page-hero-title">I miei progetti</h1>
-                <p class="page-hero-description">
-                    Una selezione dei lavori più significativi, dal branding allo sviluppo di interfacce complesse.
-                </p>
+                <p class="page-hero-description">Una selezione dei lavori più significativi che ho realizzato, tra design, sviluppo e strategia digitale.</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Grid -->
-    <section class="projects-page-section section-padding">
+    <!-- Projects Filter -->
+    <section class="projects-section section-padding">
         <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Portfolio</h2>
+                <div class="title-line"></div>
+                <p class="page-hero-description">Esplora i miei progetti, organizzati per categoria.</p>
+            </div>
+            
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">Tutti</button>
-                <button class="filter-btn" data-filter="web">Siti Web</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="graphic">Grafica</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="development">Development</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX</button>
             </div>
             
             <div class="projects-grid full-grid">
-                <!-- Scheda con questo sito -->
-                <div class="project-card full" data-category="web">
+                <!-- Progetto 1 -->
+                <div class="project-card full" data-category="web,development">
                     <div class="project-image">
                         <div class="image-placeholder" style="background: linear-gradient(135deg, #00e5ff20, #7afcff30);">
                             <span>Portfolio Site</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <div class="project-category">Sito Web</div>
+                        <div class="project-category">Web Design • Development</div>
                         <h3 class="project-title">Sito Portfolio Personale</h3>
-                        <p class="project-description">
-                            Design e sviluppo completo di questo sito portfolio con animazioni avanzate, 
-                            cursore personalizzato e design minimal. Il sito è completamente responsive 
-                            e ottimizzato per performance.
-                        </p>
+                        <p class="project-description">Design e sviluppo completo di questo sito portfolio con animazioni avanzate, design minimal e ottimizzazione per dispositivi mobili.</p>
                         <div class="project-tags">
-                            <span class="tag">Web Design</span>
-                            <span class="tag">Development</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Responsive</span>
                             <span class="tag">UI/UX</span>
-                            <span class="tag">Animazioni</span>
                         </div>
                         <div class="project-cta">
-                            <span class="project-details-link current">
-                                Questo sito
-                            </span>
+                            <a href="index.html" class="project-details-link current">
+                                Vedi progetto live
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
+                    <a href="index.html" class="project-link" aria-label="Vedi progetto Portfolio"></a>
                 </div>
                 
-                <!-- Schede "In arrivo" -->
-                <div class="project-card full" data-category="web">
+                <!-- Progetto 2 -->
+                <div class="project-card full" data-category="uiux,web">
                     <div class="project-image">
                         <div class="image-placeholder" style="background: linear-gradient(135deg, #ff00aa20, #ff7afc30);">
-                            <span>In Arrivo</span>
+                            <span>UI/UX Design</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <div class="project-category">Sito Web</div>
-                        <h3 class="project-title">Nuovo Progetto Web</h3>
-                        <p class="project-description">
-                            Prossimamente un nuovo progetto web interessante. 
-                            Resta sintonizzato per scoprire il prossimo lavoro.
-                        </p>
+                        <div class="project-category">UI/UX Design</div>
+                        <h3 class="project-title">Sistema Design Digitale</h3>
+                        <p class="project-description">Creazione di un sistema design completo per un'app SaaS, includendo component library, design system e documentazione.</p>
                         <div class="project-tags">
-                            <span class="tag">In Arrivo</span>
-                            <span class="tag">Web Development</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Design System</span>
+                            <span class="tag">Prototipazione</span>
                         </div>
                         <div class="project-cta">
-                            <span class="project-details-link">
-                                Prossimamente
-                            </span>
+                            <a href="#" class="project-details-link">
+                                Case Study in arrivo
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
+                    <a href="#" class="project-link" aria-label="Progetto UI/UX"></a>
                 </div>
                 
-                <div class="project-card full" data-category="branding">
+                <!-- Progetto 3 -->
+                <div class="project-card full" data-category="development">
                     <div class="project-image">
                         <div class="image-placeholder" style="background: linear-gradient(135deg, #aa00ff20, #7a7afc30);">
-                            <span>In Arrivo</span>
+                            <span>Web App</span>
                         </div>
                     </div>
                     <div class="project-content">
-                        <div class="project-category">Branding</div>
-                        <h3 class="project-title">Nuovo Progetto di Branding</h3>
-                        <p class="project-description">
-                            Progetto di branding in fase di sviluppo. 
-                            Logo design, identità visiva e applicazioni.
-                        </p>
+                        <div class="project-category">Development</div>
+                        <h3 class="project-title">Applicazione Web Interattiva</h3>
+                        <p class="project-description">Sviluppo di un'applicazione web con funzionalità in tempo reale, API integration e dashboard admin.</p>
                         <div class="project-tags">
-                            <span class="tag">In Arrivo</span>
-                            <span class="tag">Logo Design</span>
-                            <span class="tag">Brand Identity</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">API</span>
+                            <span class="tag">Database</span>
                         </div>
                         <div class="project-cta">
-                            <span class="project-details-link">
-                                Prossimamente
-                            </span>
+                            <a href="#" class="project-details-link">
+                                Dettagli progetto
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
-                
-                <div class="project-card full" data-category="graphic">
-                    <div class="project-image">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #00ffaa20, #7afcaa30);">
-                            <span>In Arrivo</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Grafica</div>
-                        <h3 class="project-title">Progetto Grafico</h3>
-                        <p class="project-description">
-                            Nuovo progetto grafico in arrivo. 
-                            Design di materiali stampati e digitali.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">In Arrivo</span>
-                            <span class="tag">Grafica</span>
-                            <span class="tag">Print Design</span>
-                        </div>
-                        <div class="project-cta">
-                            <span class="project-details-link">
-                                Prossimamente
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card full" data-category="web">
-                    <div class="project-image">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #ffaa0020, #fc7a7a30);">
-                            <span>In Arrivo</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Sito Web</div>
-                        <h3 class="project-title">Applicazione Web</h3>
-                        <p class="project-description">
-                            Nuova applicazione web in fase di sviluppo. 
-                            Interfaccia utente avanzata con funzionalità innovative.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">In Arrivo</span>
-                            <span class="tag">Web App</span>
-                            <span class="tag">UI/UX</span>
-                        </div>
-                        <div class="project-cta">
-                            <span class="project-details-link">
-                                Prossimamente
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card full" data-category="branding,graphic">
-                    <div class="project-image">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #aa7aff20, #7aaafc30);">
-                            <span>In Arrivo</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Branding & Grafica</div>
-                        <h3 class="project-title">Progetto Completo</h3>
-                        <p class="project-description">
-                            Progetto completo che include branding, grafica e design web. 
-                            Approccio integrato per soluzioni complete.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">In Arrivo</span>
-                            <span class="tag">Branding</span>
-                            <span class="tag">Grafica</span>
-                            <span class="tag">Web Design</span>
-                        </div>
-                        <div class="project-cta">
-                            <span class="project-details-link">
-                                Prossimamente
-                            </span>
-                        </div>
-                    </div>
+                    <a href="#" class="project-link" aria-label="Progetto Web App"></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section section-padding">
+    <!-- Footer -->
+    <footer class="main-footer">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Hai un progetto in mente?</h2>
-                <p class="cta-description">
-                    Collaboriamo per trasformare la tua idea in una soluzione digitale eccezionale.
-                </p>
-                <a href="contatti.html" class="cta-button large">
-                    Iniziamo un progetto insieme
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-     <!-- Footer -->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <a href="index.html">Luca Bodini</a>
-                <p>Design & Development</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Luca Bodini</a>
+                    <p>Design & Development</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigazione</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="progetti.html">Progetti</a></li>
+                            <li><a href="servizi.html">Servizi</a></li>
+                            <li><a href="contatti.html">Contatti</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>Social</h4>
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
-            <div class="footer-links">
-                <div class="footer-nav">
-                    <h4>Navigazione</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="progetti.html">Progetti</a></li>
-                        <li><a href="servizi.html">Servizi</a></li>
-                        <li><a href="contatti.html">Contatti</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-social">
-                    <h4>Social</h4>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Contatti</h4>
-                    <ul>
-                        <li><a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a></li>
-                    </ul>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
-            <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- Page Transition Overlay -->
     <div class="page-transition-overlay"></div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servizi | Luca Bodini</title>
+    <title>Servizi | Luca Bodini Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,119 +11,104 @@
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Previeni flash del cursore di default durante il caricamento */
         html, body, * {
             cursor: none !important;
-        }
-        
-        /* Fix per il cursore bloccato in alto a sinistra */
-        body {
-            overflow-x: hidden;
         }
     </style>
 </head>
 <body class="loaded">
-    <!-- Custom Cursor Elements -->
-    <!-- Saranno creati da JavaScript -->
+    <header class="main-header">
+        <div class="container-nav">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
+                    <li class="nav-item"><a href="servizi.html" class="nav-link active">Servizi</a></li>
+                    <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<header class="main-header">
-    <div class="container-nav">
-        <nav class="navbar">
-            <!-- LOGO spostato 1cm a destra -->
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
-                </a>
-            </div>
-            
-            <!-- MENU spostato 1cm a sinistra -->
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
-                <li class="nav-item"><a href="servizi.html" class="nav-link active">Servizi</a></li>
-                <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
-            </ul>
-            
-            <!-- HAMBURGER MENU (solo mobile) -->
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </div>
-</header>
+    <!-- Overlay per menu mobile -->
+    <div class="menu-overlay"></div>
 
-    <!-- Services Hero -->
-    <section class="page-hero section-padding">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
-                <h1 class="page-hero-title">I miei servizi</h1>
-                <p class="page-hero-description">
-                    Soluzioni creative e tecniche per portare online la tua presenza e rafforzare la tua identità visiva.
-                </p>
+                <h1 class="page-hero-title">Servizi</h1>
+                <p class="page-hero-description">Offro soluzioni complete per portare la tua presenza digitale al livello successivo.</p>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="services-section section-padding">
+    <!-- Services -->
+    <section class="about-section section-padding">
         <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cosa posso fare per te</h2>
+                <div class="title-line"></div>
+            </div>
+            
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-code"></i>
                         <div class="icon-background"></div>
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3 class="service-title">Creazione di Siti Web</h3>
-                    <p class="service-description">
-                        Sviluppo di siti web moderni, responsive e performanti che offrono un'esperienza utente eccezionale su tutti i dispositivi.
-                    </p>
+                    <h3 class="service-title">Web Design</h3>
+                    <p class="service-description">Creazione di interfacce utente intuitive, visivamente accattivanti e funzionali che migliorano l'esperienza utente e convertono i visitatori in clienti.</p>
                     <ul class="service-features">
-                        <li>Siti web responsive e mobile-friendly</li>
-                        <li>Design personalizzato e unico</li>
-                        <li>Ottimizzazione SEO e performance</li>
-                        <li>Integrazioni e funzionalità avanzate</li>
-                        <li>Manutenzione e aggiornamenti</li>
+                        <li>UI/UX Design</li>
+                        <li>Design Responsive</li>
+                        <li>Prototipazione interattiva</li>
+                        <li>Wireframing</li>
                     </ul>
                 </div>
                 
                 <!-- Service 2 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-palette"></i>
                         <div class="icon-background"></div>
+                        <i class="fas fa-code"></i>
                     </div>
-                    <h3 class="service-title">Creazione di Loghi</h3>
-                    <p class="service-description">
-                        Design di loghi unici e memorabili che rappresentano perfettamente la tua identità aziendale e si distinguono nel mercato.
-                    </p>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">Sviluppo di siti web e applicazioni performanti, sicure e scalabili utilizzando le tecnologie più moderne e best practices.</p>
                     <ul class="service-features">
-                        <li>Design logo personalizzato</li>
-                        <li>Varie proposte creative</li>
-                        <li>File in diversi formati (vector, PNG, JPG)</li>
-                        <li>Guide all'utilizzo del logo</li>
-                        <li>Applicazioni su vari supporti</li>
+                        <li>Sviluppo Frontend</li>
+                        <li>Sviluppo Backend</li>
+                        <li>E-commerce</li>
+                        <li>Ottimizzazione SEO</li>
                     </ul>
                 </div>
                 
                 <!-- Service 3 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-brush"></i>
                         <div class="icon-background"></div>
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <h3 class="service-title">Servizi di Grafica</h3>
-                    <p class="service-description">
-                        Design grafico professionale per materiali stampati e digitali che comunicano efficacemente il tuo messaggio.
-                    </p>
+                    <h3 class="service-title">Brand Strategy</h3>
+                    <p class="service-description">Sviluppo di strategie digitali complete che allineano il design e la tecnologia agli obiettivi di business.</p>
                     <ul class="service-features">
-                        <li>Volantini e brochure</li>
-                        <li>Biglietti da visita</li>
-                        <li>Banner e grafiche per social media</li>
-                        <li>Presentazioni aziendali</li>
-                        <li>Materiali marketing</li>
+                        <li>Analisi competitiva</li>
+                        <li>User Research</li>
+                        <li>Content Strategy</li>
+                        <li>Digital Transformation</li>
                     </ul>
                 </div>
             </div>
@@ -131,62 +116,43 @@
     </section>
 
     <!-- Process Section -->
-    <section class="process-section section-padding">
+    <section class="projects-section section-padding">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Il mio processo di lavoro</h2>
+                <h2 class="section-title">Il mio processo</h2>
                 <div class="title-line"></div>
-                <p class="section-description">
-                    Un approccio strutturato in 4 fasi che garantisce risultati eccezionali
-                </p>
+                <p class="page-hero-description">Un approccio strutturato per garantire risultati eccezionali in ogni progetto.</p>
             </div>
             
             <div class="process-steps">
                 <div class="process-step">
                     <div class="step-number">01</div>
-                    <h3 class="step-title">Consulenza</h3>
-                    <p class="step-description">
-                        Analisi delle tue esigenze, obiettivi e pubblico di riferimento per definire la direzione del progetto.
-                    </p>
+                    <h3 class="step-title">Discovery</h3>
+                    <p class="step-description">Analisi approfondita degli obiettivi, del pubblico target e dei requisiti del progetto.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">02</div>
-                    <h3 class="step-title">Progettazione</h3>
-                    <p class="step-description">
-                        Sviluppo della soluzione visiva e funzionale attraverso bozze, mockup e prototipi.
-                    </p>
+                    <h3 class="step-title">Design</h3>
+                    <p class="step-description">Creazione di wireframe, prototipi e design definitivo dell'interfaccia utente.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">03</div>
-                    <h3 class="step-title">Sviluppo</h3>
-                    <p class="step-description">
-                        Realizzazione tecnica del progetto con attenzione ai dettagli, performance e qualità.
-                    </p>
+                    <h3 class="step-title">Development</h3>
+                    <p class="step-description">Sviluppo tecnico del progetto con codice pulito, performante e ben documentato.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">04</div>
-                    <h3 class="step-title">Consegna</h3>
-                    <p class="step-description">
-                        Delivery del progetto completo, formazione e supporto post-consegna.
-                    </p>
+                    <h3 class="step-title">Launch & Support</h3>
+                    <p class="step-description">Deploy del progetto, testing e supporto post-lancio per garantire il successo continuo.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section section-padding">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Pronto a realizzare il tuo progetto?</h2>
-                <p class="cta-description">
-                    Contattami per discutere di come possiamo collaborare per raggiungere i tuoi obiettivi.
-                </p>
+            
+            <div class="projects-cta">
                 <a href="contatti.html" class="cta-button large">
-                    Iniziamo una conversazione
+                    Parlami del tuo progetto
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -194,49 +160,49 @@
     </section>
 
     <!-- Footer -->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <a href="index.html">Luca Bodini</a>
-                <p>Design & Development</p>
-            </div>
-            
-            <div class="footer-links">
-                <div class="footer-nav">
-                    <h4>Navigazione</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="progetti.html">Progetti</a></li>
-                        <li><a href="servizi.html">Servizi</a></li>
-                        <li><a href="contatti.html">Contatti</a></li>
-                    </ul>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Luca Bodini</a>
+                    <p>Design & Development</p>
                 </div>
                 
-                <div class="footer-social">
-                    <h4>Social</h4>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigazione</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="progetti.html">Progetti</a></li>
+                            <li><a href="servizi.html">Servizi</a></li>
+                            <li><a href="contatti.html">Contatti</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>Social</h4>
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a></li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="footer-contact">
-                    <h4>Contatti</h4>
-                    <ul>
-                        <li><a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a></li>
-                    </ul>
-                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Luca Bodini. Tutti i diritti riservati.</p>
-            <p><a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- Page Transition Overlay -->
     <div class="page-transition-overlay"></div>

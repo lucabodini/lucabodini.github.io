@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Previeni flash del cursore di default durante il caricamento */
         html, body, * {
             cursor: none !important;
         }
@@ -24,14 +23,14 @@
 <header class="main-header">
     <div class="container-nav">
         <nav class="navbar">
-            <!-- LOGO spostato 1cm a destra -->
+            <!-- LOGO -->
             <div class="logo">
                 <a href="index.html">
                     <img src="assets/images/lb.png" alt="Luca Bodini Logo" class="logo-image">
                 </a>
             </div>
             
-            <!-- MENU spostato 1cm a sinistra -->
+            <!-- MENU -->
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="progetti.html" class="nav-link">Progetti</a></li>
@@ -48,12 +47,15 @@
         </nav>
     </div>
 </header>
+
+<!-- Overlay per menu mobile -->
+<div class="menu-overlay"></div>
+
 <!-- Video Background Hero -->
 <section class="hero-section">
     <div class="video-background">
         <video autoplay muted loop playsinline id="hero-video">
             <source src="assets/video/video-background.mp4" type="video/mp4">
-            <!-- Fallback image if video doesn't load -->
             <img src="assets/images/hero-fallback.jpg" alt="Background fallback">
         </video>
         <div class="video-overlay"></div>
@@ -80,8 +82,8 @@
                 <div class="about-text">
                     <h3 class="about-headline">Creatività, tecnologia e strategia</h3>
                     <p class="about-description">
-                        Sono un designer e sviluppatore creativo con oltre 8 anni di esperienza nel creare esperienze digitali uniche e memorabili. 
-                        Mi concentro sull'intersezione tra design funzionale e innovazione tecnologica, creando soluzioni che non solo 
+                        Sono un sistemista, un designer e sviluppatore creativo, 
+                        mi concentro sull'intersezione tra design funzionale e innovazione tecnologica, creando soluzioni che non solo 
                         soddisfano gli obiettivi del cliente ma superano le aspettative degli utenti.
                     </p>
                     <p class="about-description">
@@ -113,7 +115,6 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Scheda con questo sito -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="image-placeholder" style="background: linear-gradient(135deg, #00e5ff20, #7afcff30);">
@@ -132,7 +133,6 @@
                     <a href="progetti.html" class="project-link" aria-label="Vedi progetto Portfolio"></a>
                 </div>
                 
-                <!-- Schede "In arrivo" -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="image-placeholder" style="background: linear-gradient(135deg, #ff00aa20, #ff7afc30);">

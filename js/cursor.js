@@ -1,38 +1,20 @@
 // ============================================
-// CUSTOM CURSOR - FIX PER CURSORE BLOCCATO
+// CUSTOM CURSOR - VERSIONE OTTIMIZZATA CON FIX POSIZIONE
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Controlla se è un dispositivo touch - se sì, disabilita il cursore personalizzato
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        console.log('Dispositivo touch rilevato - cursore personalizzato disabilitato');
+        
+        // Aggiungi classe per CSS fallback
+        document.documentElement.classList.add('touch-device');
+        document.documentElement.classList.add('cursor-fallback');
+        
+        return;
+    }
+    
     console.log('Inizializzazione cursore personalizzato...');
-    
-    // Controlla se siamo su un dispositivo touch
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
-    if (isTouchDevice) {
-        console.log('Dispositivo touch - cursore personalizzato disabilitato');
-        // Ripristina cursore normale per dispositivi touch
-        document.querySelectorAll('html, body, *').forEach(el => {
-            el.style.cursor = 'auto';
-        });
-        return;
-    }
-    
-    // Assicurati che il body sia pronto
-    if (!document.body) {
-        console.error('Body non trovato, ritardo inizializzazione cursore');
-        setTimeout(initCursor, 100);
-        return;
-    }
-    
-    initCursor();
-});
-
-function initCursor() {
-    // Rimuovi eventuali cursori esistenti
-    const existingCursor = document.querySelector('.cursor-dot, .cursor-ring');
-    if (existingCursor) {
-        existingCursor.remove();
-    }
     
     // Crea gli elementi del cursore
     const cursorDot = document.createElement('div');
@@ -41,123 +23,181 @@ function initCursor() {
     cursorDot.className = 'cursor-dot';
     cursorRing.className = 'cursor-ring';
     
-    // Nascondi inizialmente
+    // Nascondi inizialmente per evitare flash
     cursorDot.style.opacity = '0';
     cursorRing.style.opacity = '0';
     
     document.body.appendChild(cursorDot);
     document.body.appendChild(cursorRing);
     
-    // Aggiungi classe al body per mostrare il cursore
-    document.body.classList.add('has-custom-cursor');
+    // Coordinate del mouse - inizializza con posizione centrale
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX; // INIZIALIZZA ALLA STESSA POSIZIONE
+    let ringY = mouseY; // INIZIALIZZA ALLA STESSA POSIZIONE
     
-    // Variabili per la posizione
-    let mouseX = 0;
-    let mouseY = 0;
-    let dotX = 0;
-    let dotY = 0;
-    let ringX = 0;
-    let ringY = 0;
+    // Stato del cursore
+    let isPointer = false;
+    let isHidden = true; // Inizia nascosto
     
-    // Velocità di movimento (più basso = più smooth)
-    const dotSpeed = 0.2;   // Puntino: più veloce, segue subito
-    const ringSpeed = 0.07;  // Cerchio: più lento, segue con ritardo
+    // Velocità di interpolazione
+    const ringSpeed = 0.15;
     
-    // Aggiorna la posizione del mouse
-    document.addEventListener('mousemove', function(e) {
+    // Inizializza subito le posizioni
+    function initializeCursorPosition() {
+        // Centra il puntino
+        cursorDot.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
+        
+        // Centra l'anello - PARTE GIÀ NELLA POSIZIONE CORRETTA
+        cursorRing.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0) scale(1)`;
+        
+        // Mostra gradualmente
+        setTimeout(() => {
+            cursorDot.style.opacity = '1';
+            cursorRing.style.opacity = '1';
+            isHidden = false;
+        }, 50);
+    }
+    
+    // Aggiorna la posizione del puntino
+    function updateDotPosition(e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
-        // Mostra il cursore quando il mouse si muove
-        if (cursorDot.style.opacity === '0') {
+        // Centra il puntino (6px / 2 = 3px)
+        cursorDot.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
+        
+        // Se era nascosto, mostra
+        if (isHidden) {
             cursorDot.style.opacity = '1';
             cursorRing.style.opacity = '1';
+            isHidden = false;
+        }
+    }
+    
+    // Animazione fluida per l'anello
+    function animateRing() {
+        // Solo se non è nascosto
+        if (!isHidden) {
+            // Interpolazione per movimento fluido dell'anello
+            ringX += (mouseX - ringX) * ringSpeed;
+            ringY += (mouseY - ringY) * ringSpeed;
+            
+            // Centra l'anello (36px / 2 = 18px)
+            cursorRing.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0) scale(${isPointer ? 1.5 : 1})`;
+        }
+        
+        // Richiama la prossima frame
+        requestAnimationFrame(animateRing);
+    }
+    
+    // Gestisci il movimento del mouse
+    function handleMouseMove(e) {
+        updateDotPosition(e);
+    }
+    
+    // Nascondi il cursore quando il mouse esce dalla finestra
+    function handleMouseLeave() {
+        cursorDot.style.opacity = '0';
+        cursorRing.style.opacity = '0';
+        isHidden = true;
+    }
+    
+    // Mostra il cursore quando il mouse rientra
+    function handleMouseEnter(e) {
+        // Aggiorna la posizione prima di mostrare
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        ringX = mouseX; // Sincronizza subito l'anello
+        ringY = mouseY;
+        
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+        isHidden = false;
+        
+        // Aggiorna immediatamente la posizione
+        cursorDot.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
+        cursorRing.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0) scale(${isPointer ? 1.5 : 1})`;
+    }
+    
+    // Rileva quando il mouse è su elementi cliccabili
+    function handleMouseOver(e) {
+        const target = e.target;
+        const isClickable = target.matches('a, button, .cta-button, input, textarea, select, [role="button"], .nav-link, .project-link');
+        
+        if (isClickable) {
+            isPointer = true;
+        }
+    }
+    
+    // Rileva quando il mouse esce da elementi cliccabili
+    function handleMouseOut(e) {
+        const target = e.target;
+        const isClickable = target.matches('a, button, .cta-button, input, textarea, select, [role="button"], .nav-link, .project-link');
+        
+        if (isClickable) {
+            isPointer = false;
+        }
+    }
+    
+    // Inizializza subito il cursore
+    initializeCursorPosition();
+    
+    // Inizializza gli event listeners
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseenter', handleMouseEnter);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
+    
+    // Track mouse position anche durante le transizioni di pagina
+    document.addEventListener('mousemove', function(e) {
+        // Salva l'ultima posizione in sessionStorage per le transizioni
+        try {
+            sessionStorage.setItem('cursorX', e.clientX);
+            sessionStorage.setItem('cursorY', e.clientY);
+        } catch (e) {
+            // Ignora errori di storage
         }
     });
     
-    // Gestisci il click del mouse
-    document.addEventListener('mousedown', function() {
-        cursorRing.classList.add('click');
-        cursorDot.classList.add('click');
-    });
-    
-    document.addEventListener('mouseup', function() {
-        cursorRing.classList.remove('click');
-        cursorDot.classList.remove('click');
-    });
-    
-    // Aggiungi effetti hover a TUTTI gli elementi interattivi
-    const interactiveElements = document.querySelectorAll(
-        'a, button, .cta-button, .project-card, .service-card, ' +
-        'input, textarea, select, .clickable, .nav-link, .filter-btn, ' +
-        '.faq-question, .project-link'
-    );
-    
-    interactiveElements.forEach(el => {
-        // Forza il cursore a none su questi elementi
-        el.style.cursor = 'none';
+    // Prova a recuperare l'ultima posizione nota del cursore
+    try {
+        const savedX = sessionStorage.getItem('cursorX');
+        const savedY = sessionStorage.getItem('cursorY');
         
-        el.addEventListener('mouseenter', function() {
-            cursorRing.classList.add('hover');
-            cursorDot.classList.add('hover');
-        });
-        
-        el.addEventListener('mouseleave', function() {
-            cursorRing.classList.remove('hover');
-            cursorDot.classList.remove('hover');
-        });
-    });
+        if (savedX && savedY) {
+            mouseX = parseInt(savedX);
+            mouseY = parseInt(savedY);
+            ringX = mouseX;
+            ringY = mouseY;
+            
+            // Aggiorna immediatamente
+            cursorDot.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
+            cursorRing.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0) scale(1)`;
+        }
+    } catch (e) {
+        // Ignora errori di storage
+    }
     
-    // Previeni qualsiasi cursore di default
+    // Disabilita il cursore di default
     document.addEventListener('mouseover', function(e) {
-        if (e.target.style) {
-            e.target.style.cursor = 'none';
+        e.target.style.cursor = 'none';
+    });
+    
+    // Inizia l'animazione
+    animateRing();
+    
+    // Cleanup al cambio pagina
+    window.addEventListener('beforeunload', function() {
+        // Salva l'ultima posizione
+        try {
+            sessionStorage.setItem('cursorX', mouseX);
+            sessionStorage.setItem('cursorY', mouseY);
+        } catch (e) {
+            // Ignora errori
         }
     });
     
-    // Funzione di animazione
-    function animateCursor() {
-        // Calcola la posizione per il PUNTINO (segue immediatamente)
-        dotX += (mouseX - dotX) * dotSpeed;
-        dotY += (mouseY - dotY) * dotSpeed;
-        
-        // Calcola la posizione per il CERCHIO (segue con ritardo)
-        ringX += (mouseX - ringX) * ringSpeed;
-        ringY += (mouseY - ringY) * ringSpeed;
-        
-        // Applica la posizione al PUNTINO
-        cursorDot.style.left = dotX + 'px';
-        cursorDot.style.top = dotY + 'px';
-        
-        // Applica la posizione al CERCHIO
-        cursorRing.style.left = ringX + 'px';
-        cursorRing.style.top = ringY + 'px';
-        
-        // Continua l'animazione
-        requestAnimationFrame(animateCursor);
-    }
-    
-    // Imposta la posizione iniziale fuori dallo schermo (risolve il problema del cursore bloccato)
-    mouseX = -100;
-    mouseY = -100;
-    dotX = ringX = mouseX;
-    dotY = ringY = mouseY;
-    
-    // Aspetta che la pagina sia completamente caricata prima di iniziare
-    window.addEventListener('load', function() {
-        // Piccolo ritardo per assicurarsi che tutto sia pronto
-        setTimeout(() => {
-            // Avvia l'animazione
-            animateCursor();
-            console.log('Cursore personalizzato inizializzato con successo');
-        }, 500);
-    });
-    
-    // Fallback se load event è già passato
-    if (document.readyState === 'complete') {
-        setTimeout(() => {
-            animateCursor();
-            console.log('Cursore personalizzato inizializzato con successo (fallback)');
-        }, 500);
-    }
-}
+    console.log('Cursore personalizzato inizializzato con successo');
+});
