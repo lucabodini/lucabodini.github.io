@@ -344,7 +344,7 @@ a {
 }
 
 /* ============================================
-   HERO SECTION WITH VIDEO BACKGROUND
+   HERO SECTION WITH VIDEO BACKGROUND - RESET COMPLETO
    ============================================ */
 .hero-section {
     position: relative;
@@ -354,28 +354,33 @@ a {
     overflow: hidden;
 }
 
+/* CONTENITORE DEL VIDEO - FIXED E A SCHERMO INTERO */
 .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    transition: opacity 0.8s ease !important;
 }
 
+/* IL VIDEO DENTRO - COPRE TUTTO LO SCHERMO */
 .video-background video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-width: 100%;
-    min-height: 100%;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: cover !important;
 }
 
+/* OVERLAY SEMITRASPARENTE */
 .video-overlay {
     position: absolute;
     top: 0;
@@ -383,13 +388,15 @@ a {
     width: 100%;
     height: 100%;
     background: linear-gradient(to right, rgba(11, 11, 13, 0.6) 0%, rgba(11, 11, 13, 0.3) 30%, rgba(11, 11, 13, 0.7) 100%);
+    z-index: 1;
 }
 
+/* CONTENUTO HERO (sopra il video) */
 .hero-content {
     width: 100%;
     padding-left: 5%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-title {
@@ -1364,4 +1371,28 @@ a {
 
 .faq-item.active .faq-answer {
     max-height: 500px;
+}
+/* ============================================
+   VIDEO SCROLL OPACITY EFFECT
+   ============================================ */
+.video-background {
+    transition: opacity 0.8s ease;
+    will-change: opacity;
+}
+
+.video-background.faded {
+    opacity: 0.3; /* Regola questo valore per l'opacità finale (0.3 = 30%) */
+}
+
+/* Assicurati che il video sia sempre di sfondo */
+.video-background video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transition: opacity 0.8s ease;
 }

@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
+
+    // Aggiungi questa funzione dopo le altre inizializzazioni
+    initVideoScrollEffect();
 });
 
 // ============================================
@@ -214,4 +217,32 @@ function initSmoothScrolling() {
             }
         });
     });
+}
+
+function initVideoScrollEffect() {
+    const videoBg = document.querySelector('.video-background');
+    
+    if (!videoBg) {
+        console.log('Video background non trovato');
+        return;
+    }
+    
+    console.log('Video background trovato, inizializzo effetto scroll...');
+    
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        // Calcola opacità: 1 (100%) in alto, 0.3 (30%) dopo aver scrollato una viewport
+        let opacity = 1 - (scrollY / windowHeight);
+        
+        // Limita tra 0.3 e 1
+        opacity = Math.max(0.3, Math.min(1, opacity));
+        
+        // Applica al video background
+        videoBg.style.opacity = opacity;
+    });
+    
+    // Trigger iniziale
+    window.dispatchEvent(new Event('scroll'));
 }
