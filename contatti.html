@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti | Luca Bodini Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/lb.png">
+    <link rel="apple-touch-icon" href="assets/images/lb.png">
+    <link rel="shortcut icon" href="assets/images/lb.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Neue+Haas+Grotesk+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +20,230 @@
     <style>
         html, body, * {
             cursor: none !important;
+        }
+        
+        /* Stile per la sezione contatti */
+        .contact-direct-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-color: rgba(20, 20, 22, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+        
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00e5ff, #7afcff);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .contact-button:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .contact-button.email-button {
+            border-color: rgba(234, 67, 53, 0.2);
+        }
+        
+        .contact-button.email-button:hover {
+            border-color: rgba(234, 67, 53, 0.4);
+            box-shadow: 0 10px 30px rgba(234, 67, 53, 0.15);
+        }
+        
+        .contact-button.email-button::before {
+            background: linear-gradient(90deg, #EA4335, #FBBC05);
+        }
+        
+        .contact-button.instagram-button {
+            border-color: rgba(225, 48, 108, 0.2);
+        }
+        
+        .contact-button.instagram-button:hover {
+            border-color: rgba(225, 48, 108, 0.4);
+            box-shadow: 0 10px 30px rgba(225, 48, 108, 0.15);
+        }
+        
+        .contact-button.instagram-button::before {
+            background: linear-gradient(90deg, #833AB4, #E1306C, #F77737);
+        }
+        
+        .contact-button.linkedin-button {
+            border-color: rgba(10, 102, 194, 0.2);
+        }
+        
+        .contact-button.linkedin-button:hover {
+            border-color: rgba(10, 102, 194, 0.4);
+            box-shadow: 0 10px 30px rgba(10, 102, 194, 0.15);
+        }
+        
+        .contact-button.linkedin-button::before {
+            background: linear-gradient(90deg, #0A66C2, #00A0DC);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            transition: transform 0.4s ease;
+        }
+        
+        .contact-button:hover .contact-icon {
+            transform: scale(1.1);
+        }
+        
+        .contact-button.email-button .contact-icon {
+            background: linear-gradient(135deg, rgba(234, 67, 53, 0.1), rgba(251, 188, 5, 0.1));
+            color: #EA4335;
+        }
+        
+        .contact-button.instagram-button .contact-icon {
+            background: linear-gradient(135deg, rgba(131, 58, 180, 0.1), rgba(225, 48, 108, 0.1));
+            color: #E1306C;
+        }
+        
+        .contact-button.linkedin-button .contact-icon {
+            background: linear-gradient(135deg, rgba(10, 102, 194, 0.1), rgba(0, 160, 220, 0.1));
+            color: #0A66C2;
+        }
+        
+        .contact-button-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        
+        .contact-button-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-button-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #00e5ff;
+            margin-top: 0.5rem;
+        }
+        
+        .contact-button.email-button .contact-button-action {
+            color: #EA4335;
+        }
+        
+        .contact-button.instagram-button .contact-button-action {
+            color: #E1306C;
+        }
+        
+        .contact-button.linkedin-button .contact-button-action {
+            color: #0A66C2;
+        }
+        
+        .contact-button-action i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-button:hover .contact-button-action i {
+            transform: translateX(5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-buttons-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .contact-button {
+                padding: 1.5rem;
+            }
+            
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.75rem;
+            }
+        }
+        
+        /* Info contatto aggiuntive */
+        .contact-info-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-info-item {
+            text-align: center;
+        }
+        
+        .contact-info-item h4 {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .contact-info-item p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info-item a {
+            color: #00e5ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info-item a:hover {
+            color: #7afcff;
         }
     </style>
 </head>
@@ -45,136 +276,84 @@
     <!-- Overlay per menu mobile -->
     <div class="menu-overlay"></div>
 
-    <!-- Page Hero -->
+        <!-- Page Hero con titolo -->
     <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
                 <h1 class="page-hero-title">Contatti</h1>
-                <p class="page-hero-description">Hai un progetto in mente? Parliamone! Sono sempre aperto a nuove collaborazioni e sfide creative.</p>
+                <p class="page-hero-description">Scegli il metodo che preferisci per metterti in contatto con me. Sono sempre disponibile per discutere di nuovi progetti, collaborazioni o semplicemente per una chiacchierata.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Content -->
+    <!-- Pulsanti di contatto - SENZA SECONDO TITOLO -->
     <section class="about-section section-padding">
         <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Info -->
-                <div class="contact-info">
-                    <h2 class="contact-title">Mettiamoci in contatto</h2>
-                    <p class="contact-description">Che tu abbia bisogno di un nuovo sito web, di una consulenza o semplicemente di una chiacchierata sul mondo del design e sviluppo, risponderò al più presto.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Località</h4>
-                                <p>Milano, Italia</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Disponibilità</h4>
-                                <p>Lunedì - Venerdì: 9:00 - 18:00</p>
-                            </div>
-                        </div>
+            <!-- Pulsanti di contatto diretti -->
+            <div class="contact-buttons-grid">
+                <!-- Pulsante Email -->
+                <a href="mailto:lucabodini.body@gmail.com" class="contact-button email-button">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    
-                    <div class="contact-social">
-                        <h3>Seguimi</h3>
-                        <div class="social-links">
-                            <a href="https://linkedin.com/in/luca-bodini" target="_blank" rel="noopener" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://instagram.com/bodini_luca" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://github.com/lucabodini" target="_blank" rel="noopener" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                    <h3 class="contact-button-title">Email</h3>
+                    <p class="contact-button-description">
+                        Scrivimi una email per proposte di lavoro, collaborazioni o informazioni
+                    </p>
+                    <span class="contact-button-action">
+                        Invia email <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+                
+                <!-- Pulsante Instagram -->
+                <a href="https://instagram.com/bodini_luca" target="_blank" class="contact-button instagram-button">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
                     </div>
+                    <h3 class="contact-button-title">Instagram</h3>
+                    <p class="contact-button-description">
+                        Seguimi per vedere i miei progetti, lavori in corso e contenuti esclusivi
+                    </p>
+                    <span class="contact-button-action">
+                        Vai al profilo <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+                
+                <!-- Pulsante LinkedIn -->
+                <a href="https://linkedin.com/in/luca-bodini" target="_blank" class="contact-button linkedin-button">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h3 class="contact-button-title">LinkedIn</h3>
+                    <p class="contact-button-description">
+                        Contatto professionale per collaborazioni lavorative e networking
+                    </p>
+                    <span class="contact-button-action">
+                        Vai al profilo <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+            
+            <!-- Informazioni aggiuntive -->
+            <div class="contact-info-details">
+                <div class="contact-info-item">
+                    <h4>📍 Località</h4>
+                    <p>Verona, Italia</p>
                 </div>
                 
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nome e Cognome *</label>
-                            <input type="text" id="name" name="name" required>
-                            <div class="form-error" id="nameError"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                            <div class="form-error" id="emailError"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Oggetto</label>
-                            <select id="subject" name="subject">
-                                <option value="">Seleziona un'opzione</option>
-                                <option value="web-design">Web Design</option>
-                                <option value="development">Sviluppo Web</option>
-                                <option value="consulting">Consulenza</option>
-                                <option value="collaboration">Collaborazione</option>
-                                <option value="other">Altro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Messaggio *</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                            <div class="form-error" id="messageError"></div>
-                        </div>
-                        
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">
-                                Acconsento al trattamento dei miei dati personali in accordo con la 
-                                <a href="#" target="_blank">Privacy Policy</a> *
-                            </label>
-                            <div class="form-error" id="privacyError"></div>
-                        </div>
-                        
-                        <button type="submit" class="cta-button full-width">
-                            Invia messaggio
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                        
-                        <div class="form-success" id="successMessage" style="display: none;">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Messaggio inviato con successo!</strong>
-                                <p>Ti risponderò al più presto. Grazie per avermi contattato.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="form-error-message" id="errorMessage" style="display: none;">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <div>
-                                <strong>Si è verificato un errore</strong>
-                                <p>Riprova più tardi o contattami direttamente via email.</p>
-                            </div>
-                        </div>
-                    </form>
+                <div class="contact-info-item">
+                    <h4>🕒 Disponibilità</h4>
+                    <p>Lunedì - Venerdì<br>9:00 - 18:00</p>
+                </div>
+                
+                <div class="contact-info-item">
+                    <h4>📧 Email Diretta</h4>
+                    <p><a href="mailto:lucabodini.body@gmail.com">lucabodini.body@gmail.com</a></p>
+                </div>
+                
+                <div class="contact-info-item">
+                    <h4>💼 LinkedIn</h4>
+                    <p><a href="https://linkedin.com/in/luca-bodini" target="_blank">linkedin.com/in/luca-bodini</a></p>
                 </div>
             </div>
         </div>
@@ -274,6 +453,5 @@
     <script src="js/cursor.js"></script>
     <script src="js/transitions.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/form-validation.js"></script>
 </body>
 </html>
