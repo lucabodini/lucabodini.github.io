@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luca Bodini | Portfolio</title>
+    <script>
+        (function () {
+            try {
+                if (sessionStorage.getItem('lb_startup_loader_seen_v4') === '1') {
+                    document.documentElement.classList.add('startup-loader-seen');
+                }
+            } catch (e) {}
+        })();
+    </script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/lb.png">
@@ -25,6 +34,15 @@
     </style>
 </head>
 <body class="loaded">
+    <div class="startup-loader" aria-hidden="true">
+        <div class="startup-loader__inner">
+            <div class="lb-loader" role="img" aria-label="LB loader">
+                <img src="assets/images/lb.png" alt="LB logo" class="lb-loader__logo lb-loader__logo--base">
+                <img src="assets/images/lb.png" alt="" aria-hidden="true" class="lb-loader__logo lb-loader__logo--sweep">
+                <span class="lb-loader__scan" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
     <!-- Custom Cursor Elements -->
     <!-- Saranno creati da JavaScript -->
 

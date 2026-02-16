@@ -2,6 +2,10 @@
 // MAIN JAVASCRIPT - VERSIONE COMPLETA
 // ============================================
 
+const STARTUP_LOADER_KEY = 'lb_startup_loader_seen_v4';
+
+initStartupLoader();
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Sito Luca Bodini - Inizializzazione...');
     
@@ -34,6 +38,126 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aggiungi questa funzione dopo le altre inizializzazioni
     initVideoScrollEffect();
 });
+
+function initStartupLoader() {
+    const body = document.body;
+    if (!body) return;
+
+    const hasSeenLoader = (() => {
+        try {
+            return sessionStorage.getItem(STARTUP_LOADER_KEY) === '1';
+        } catch (error) {
+            return false;
+        }
+    })();
+
+    let loader = document.querySelector('.startup-loader');
+
+    if (hasSeenLoader) {
+        body.classList.remove('loader-active');
+        body.classList.add('loader-done');
+        if (loader) loader.remove();
+        return;
+    }
+
+    body.classList.remove('loader-done');
+    body.classList.add('loader-active');
+
+    if (!loader) {
+        loader = document.createElement('div');
+        loader.className = 'startup-loader';
+        loader.setAttribute('aria-hidden', 'true');
+        loader.innerHTML = `
+            <div class="startup-loader__inner">
+                <div class="lb-loader" role="img" aria-label="LB loader">
+                    <img src="assets/images/lb.png" alt="LB logo" class="lb-loader__logo lb-loader__logo--base">
+                    <img src="assets/images/lb.png" alt="" aria-hidden="true" class="lb-loader__logo lb-loader__logo--sweep">
+                    <span class="lb-loader__scan" aria-hidden="true"></span>
+                </div>
+            </div>
+        `;
+        body.prepend(loader);
+    }
+
+    try {
+        sessionStorage.setItem(STARTUP_LOADER_KEY, '1');
+    } catch (error) {
+        // Ignore storage access errors.
+    }
+
+    let finished = false;
+    const startTime = performance.now();
+    const minDuration = 2000;
+
+    const pinNavbarLogo = () => {
+        const logoLink = document.querySelector('.logo a');
+        if (!logoLink || logoLink.querySelector('.logo-image--pinned')) return;
+
+        const pinnedLogo = document.createElement('img');
+        pinnedLogo.src = 'assets/images/lb.png';
+        pinnedLogo.alt = 'Luca Bodini Logo';
+        pinnedLogo.className = 'logo-image logo-image--pinned';
+        logoLink.appendChild(pinnedLogo);
+        body.classList.add('loader-logo-pinned');
+    };
+
+    const finalizeLoader = () => {
+        pinNavbarLogo();
+        body.classList.add('loader-done');
+        body.classList.remove('loader-active');
+        body.classList.remove('loader-exiting');
+
+        setTimeout(() => {
+            loader.remove();
+        }, 220);
+    };
+
+    const runLoaderExitAnimation = () => {
+        const movingLogo = loader.querySelector('.lb-loader');
+        const targetLogo = document.querySelector('.logo-image');
+
+        if (!movingLogo || !targetLogo) {
+            finalizeLoader();
+            return;
+        }
+
+        const from = movingLogo.getBoundingClientRect();
+        const to = targetLogo.getBoundingClientRect();
+
+        const deltaX = (to.left + (to.width / 2)) - (from.left + (from.width / 2));
+        const deltaY = (to.top + (to.height / 2)) - (from.top + (from.height / 2));
+        const scale = Math.max(0.16, Math.min(0.36, to.width / from.width));
+
+        loader.style.setProperty('--loader-exit-x', `${deltaX}px`);
+        loader.style.setProperty('--loader-exit-y', `${deltaY}px`);
+        loader.style.setProperty('--loader-exit-scale', `${scale}`);
+
+        body.classList.add('loader-exiting');
+        loader.classList.add('startup-loader--to-corner');
+
+        setTimeout(finalizeLoader, 900);
+    };
+
+    const finishLoader = () => {
+        if (finished) return;
+        finished = true;
+        runLoaderExitAnimation();
+    };
+
+    const completeWithMinDuration = () => {
+        const elapsed = performance.now() - startTime;
+        const waitTime = Math.max(0, minDuration - elapsed);
+        setTimeout(finishLoader, waitTime);
+    };
+
+    if (document.readyState === 'complete') {
+        completeWithMinDuration();
+    } else {
+        window.addEventListener('load', completeWithMinDuration, { once: true });
+    }
+
+    setTimeout(finishLoader, 5000);
+}
 
 // ============================================
 // MENU MOBILE CON OVERLAY
