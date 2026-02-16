@@ -148,10 +148,16 @@ body.loader-exiting .startup-loader::before {
     animation: lb-dock 0.82s cubic-bezier(0.18, 0.7, 0.1, 1) forwards;
 }
 
-.startup-loader--to-corner .lb-loader__logo--base,
+.startup-loader--to-corner .lb-loader__logo--base {
+    animation: none;
+    opacity: 1;
+    filter: none;
+}
+
 .startup-loader--to-corner .lb-loader__logo--sweep,
 .startup-loader--to-corner .lb-loader__scan {
-    animation-play-state: paused;
+    animation: none;
+    opacity: 0;
 }
 
 body.loader-active {
