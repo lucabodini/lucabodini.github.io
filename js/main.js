@@ -2,12 +2,13 @@
 // MAIN JAVASCRIPT - VERSIONE COMPLETA
 // ============================================
 
-const STARTUP_LOADER_KEY = 'lb_startup_loader_seen_v4';
+const STARTUP_LOADER_KEY = 'lb_startup_loader_seen_v7';
 
 initStartupLoader();
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Sito Luca Bodini - Inizializzazione...');
+    document.documentElement.classList.add('js-enhanced');
     
     // Controllo per dispositivi touch
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
@@ -29,6 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scrolling per anchor links
     initSmoothScrolling();
+
+    // Animazioni di ingresso UI
+    initNavbarEntrance();
+    initScrollReveal();
     
     // Effetto fade in al caricamento
     setTimeout(() => {
@@ -70,7 +75,11 @@ function initStartupLoader() {
         loader.innerHTML = `
             <div class="startup-loader__inner">
                 <div class="lb-loader" role="img" aria-label="LB loader">
-                    <img src="assets/images/lb.png" alt="LB logo" class="lb-loader__logo lb-loader__logo--base">
+                    <svg class="lb-loader__progress" viewBox="0 0 100 100" aria-hidden="true">
+                        <circle class="lb-loader__progress-track" cx="50" cy="50" r="46"></circle>
+                        <circle class="lb-loader__progress-value" cx="50" cy="50" r="46"></circle>
+                    </svg>
+                    <img src="assets/images/lb.png" alt="" aria-hidden="true" class="lb-loader__logo lb-loader__logo--base">
                     <img src="assets/images/lb.png" alt="" aria-hidden="true" class="lb-loader__logo lb-loader__logo--sweep">
                     <span class="lb-loader__scan" aria-hidden="true"></span>
                 </div>
@@ -88,6 +97,7 @@ function initStartupLoader() {
     let finished = false;
     const startTime = performance.now();
     const minDuration = 2000;
+    loader.style.setProperty('--loader-progress-duration', `${minDuration}ms`);
 
     const pinNavbarLogo = () => {
         const logoLink = document.querySelector('.logo a');
@@ -114,19 +124,20 @@ function initStartupLoader() {
 
     const runLoaderExitAnimation = () => {
         const movingLogo = loader.querySelector('.lb-loader');
+        const movingLogoVisual = loader.querySelector('.lb-loader__logo--base');
         const targetLogo = document.querySelector('.logo-image');
 
-        if (!movingLogo || !targetLogo) {
+        if (!movingLogo || !movingLogoVisual || !targetLogo) {
             finalizeLoader();
             return;
         }
 
-        const from = movingLogo.getBoundingClientRect();
+        const from = movingLogoVisual.getBoundingClientRect();
         const to = targetLogo.getBoundingClientRect();
 
         const deltaX = (to.left + (to.width / 2)) - (from.left + (from.width / 2));
         const deltaY = (to.top + (to.height / 2)) - (from.top + (from.height / 2));
-        const scale = Math.max(0.16, Math.min(0.36, to.width / from.width));
+        const scale = Math.max(0.16, Math.min(0.6, to.width / from.width));
 
         loader.style.setProperty('--loader-exit-x', `${deltaX}px`);
         loader.style.setProperty('--loader-exit-y', `${deltaY}px`);
@@ -343,8 +354,94 @@ function initSmoothScrolling() {
     });
 }
 
+function initNavbarEntrance() {
+    const body = document.body;
+    const navItems = document.querySelectorAll('.nav-menu .nav-item');
+
+    if (!body || !navItems.length) return;
+    let hasPlayed = false;
+
+    navItems.forEach((item, index) => {
+        item.style.setProperty('--nav-stagger', `${index * 85}ms`);
+    });
+
+    const playEntrance = () => {
+        if (hasPlayed) return;
+        hasPlayed = true;
+        body.classList.add('nav-animate-in');
+    };
+
+    if (body.classList.contains('loader-exiting') || !body.classList.contains('loader-active')) {
+        playEntrance();
+        return;
+    }
+
+    const observer = new MutationObserver(() => {
+        if (body.classList.contains('loader-exiting') || !body.classList.contains('loader-active')) {
+            observer.disconnect();
+            requestAnimationFrame(playEntrance);
+        }
+    });
+
+    observer.observe(body, { attributes: true, attributeFilter: ['class'] });
+    setTimeout(() => {
+        observer.disconnect();
+        playEntrance();
+    }, 3600);
+}
+
+function initScrollReveal() {
+    const body = document.body;
+    if (!body) return;
+
+    const revealTargets = Array.from(
+        document.querySelectorAll('section > .container > *, .hero-content, .page-hero-content')
+    );
+
+    if (!revealTargets.length) return;
+
+    body.classList.add('reveal-ready');
+
+    revealTargets.forEach((el, index) => {
+        el.classList.add('reveal-item');
+        el.style.setProperty('--reveal-delay', `${(index % 4) * 70}ms`);
+    });
+
+    const revealElement = (element) => {
+        element.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        revealTargets.forEach(revealElement);
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealElement(entry.target);
+            observer.unobserve(entry.target);
+        });
+    }, {
+        root: null,
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px'
+    });
+
+    revealTargets.forEach((el) => {
+        const isAlreadyVisible = el.getBoundingClientRect().top <= window.innerHeight * 0.88;
+        if (isAlreadyVisible) {
+            revealElement(el);
+        } else {
+            observer.observe(el);
+        }
+    });
+}
+
 function initVideoScrollEffect() {
     const videoBg = document.querySelector('.video-background');
+    const videoEl = videoBg ? videoBg.querySelector('video') : null;
+    const overlayEl = videoBg ? videoBg.querySelector('.video-overlay') : null;
     
     if (!videoBg) {
         console.log('Video background non trovato');
@@ -356,6 +453,7 @@ function initVideoScrollEffect() {
     window.addEventListener('scroll', function() {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
+        const depthProgress = Math.max(0, Math.min(1, scrollY / (windowHeight * 1.8)));
         
         // Calcola opacità: 1 (100%) in alto, 0.3 (30%) dopo aver scrollato una viewport
         let opacity = 1 - (scrollY / windowHeight);
@@ -365,6 +463,20 @@ function initVideoScrollEffect() {
         
         // Applica al video background
         videoBg.style.opacity = opacity;
+
+        if (videoEl) {
+            const shiftY = depthProgress * 42;
+            const scale = 1 + (depthProgress * 0.12);
+            const saturation = 1 + (depthProgress * 0.18);
+            const contrast = 1 + (depthProgress * 0.08);
+
+            videoEl.style.setProperty('transform', `translate(-50%, calc(-50% + ${shiftY}px)) scale(${scale})`, 'important');
+            videoEl.style.setProperty('filter', `saturate(${saturation}) contrast(${contrast})`, 'important');
+        }
+
+        if (overlayEl) {
+            overlayEl.style.opacity = `${0.88 + (depthProgress * 0.22)}`;
+        }
     });
     
     // Trigger iniziale

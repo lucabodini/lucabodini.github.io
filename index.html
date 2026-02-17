@@ -7,7 +7,7 @@
     <script>
         (function () {
             try {
-                if (sessionStorage.getItem('lb_startup_loader_seen_v4') === '1') {
+                if (sessionStorage.getItem('lb_startup_loader_seen_v7') === '1') {
                     document.documentElement.classList.add('startup-loader-seen');
                 }
             } catch (e) {}
@@ -37,7 +37,11 @@
     <div class="startup-loader" aria-hidden="true">
         <div class="startup-loader__inner">
             <div class="lb-loader" role="img" aria-label="LB loader">
-                <img src="assets/images/lb.png" alt="LB logo" class="lb-loader__logo lb-loader__logo--base">
+                <svg class="lb-loader__progress" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle class="lb-loader__progress-track" cx="50" cy="50" r="46"></circle>
+                    <circle class="lb-loader__progress-value" cx="50" cy="50" r="46"></circle>
+                </svg>
+                <img src="assets/images/lb.png" alt="" aria-hidden="true" class="lb-loader__logo lb-loader__logo--base">
                 <img src="assets/images/lb.png" alt="" aria-hidden="true" class="lb-loader__logo lb-loader__logo--sweep">
                 <span class="lb-loader__scan" aria-hidden="true"></span>
             </div>
