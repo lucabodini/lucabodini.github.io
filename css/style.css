@@ -665,6 +665,9 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
     object-fit: cover !important;
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
     will-change: transform, filter !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    transform-style: preserve-3d !important;
 }
 
 /* OVERLAY SEMITRASPARENTE */
@@ -674,9 +677,9 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(11, 11, 13, 0.6) 0%, rgba(11, 11, 13, 0.3) 30%, rgba(11, 11, 13, 0.7) 100%);
+    background: linear-gradient(to right, rgba(11, 11, 13, 0.4) 0%, rgba(11, 11, 13, 0.18) 30%, rgba(11, 11, 13, 0.5) 100%);
     z-index: 1;
-    opacity: 0.88;
+    opacity: 0.58;
     transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -887,6 +890,116 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
     .about-text {
         text-align: center;
     }
+}
+
+/* ============================================
+   SKILLS SECTION
+   ============================================ */
+.skills-section {
+    background-color: #0b0b0d;
+}
+
+.skills-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 1.4fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.skills-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(255, 255, 255, 0.03));
+    min-height: 240px;
+}
+
+.skills-display-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 1rem;
+}
+
+.skills-display-name {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #fff;
+    margin: 0;
+    min-height: 1.2em;
+}
+
+.skills-level-wrap {
+    margin-top: 1.4rem;
+}
+
+.skills-level-meta {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.55rem;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.skills-level-track {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.skills-level-fill {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(to right, #00e5ff, #7afcff);
+    transition: width 0.35s ease;
+}
+
+.skills-keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(60px, 1fr));
+    gap: 0.8rem;
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(20, 20, 22, 0.62);
+}
+
+.skill-key {
+    height: 72px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.skill-key:hover,
+.skill-key:focus-visible,
+.skill-key.is-active {
+    transform: translateY(-2px);
+    border-color: rgba(0, 229, 255, 0.55);
+    box-shadow: 0 8px 20px rgba(0, 229, 255, 0.16);
+    color: #7afcff;
+}
+
+.skill-key:focus-visible {
+    outline: 2px solid rgba(122, 252, 255, 0.45);
+    outline-offset: 2px;
 }
 
 /* ============================================
@@ -1353,6 +1466,10 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
+
+    .skills-layout {
+        grid-template-columns: 1fr;
+    }
     
     .contact-grid {
         grid-template-columns: 1fr;
@@ -1372,6 +1489,19 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skills-display {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .skills-display-name {
+        font-size: clamp(1.75rem, 8vw, 2.3rem);
+    }
+
+    .skills-keyboard {
+        grid-template-columns: repeat(3, minmax(60px, 1fr));
     }
     
     .services-grid {
@@ -1418,6 +1548,10 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
     
     .service-card {
         padding: 1.5rem;
+    }
+
+    .skills-keyboard {
+        grid-template-columns: repeat(2, minmax(60px, 1fr));
     }
 }
 /* ============================================
@@ -1638,20 +1772,7 @@ html.js-enhanced body.reveal-ready .reveal-item.is-visible {
 }
 
 .video-background.faded {
-    opacity: 0.3; /* Regola questo valore per l'opacità finale (0.3 = 30%) */
-}
-
-/* Assicurati che il video sia sempre di sfondo */
-.video-background video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transition: opacity 0.8s ease;
+    opacity: 0.75; /* Mantiene più dettaglio visivo del video */
 }
 /* ============================================
    PROJECT IMAGE STYLES

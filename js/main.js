@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scrolling per anchor links
     initSmoothScrolling();
+    
+    // Tastiera competenze (homepage)
+    initSkillsKeyboard();
 
     // Animazioni di ingresso UI
     initNavbarEntrance();
@@ -354,6 +357,70 @@ function initSmoothScrolling() {
     });
 }
 
+function initSkillsKeyboard() {
+    const displayName = document.getElementById('skills-display-name');
+    const levelLabel = document.getElementById('skills-level-label');
+    const levelFill = document.getElementById('skills-level-fill');
+    const levelTrack = document.getElementById('skills-level-track');
+    const skillButtons = document.querySelectorAll('.skill-key[data-skill-name]');
+
+    if (!displayName || !skillButtons.length || !levelLabel || !levelFill || !levelTrack) return;
+
+    const defaultLabel = displayName.textContent.trim();
+
+    const getLevelLabel = (level) => {
+        if (level <= 0) return 'Livello';
+        if (level >= 3) return 'Advanced';
+        if (level >= 2) return 'Intermediate';
+        return 'Beginner';
+    };
+
+    const getLevelPercentage = (level) => {
+        if (level >= 3) return 100;
+        if (level >= 2) return 66;
+        if (level >= 1) return 33;
+        return 0;
+    };
+
+    const setLevelState = (level) => {
+        const safeLevel = Math.max(0, Math.min(3, level));
+        const progress = getLevelPercentage(safeLevel);
+        levelFill.style.width = `${progress}%`;
+        levelLabel.textContent = getLevelLabel(safeLevel);
+        levelTrack.setAttribute('aria-valuenow', String(progress));
+    };
+
+    const clearActive = () => {
+        skillButtons.forEach((button) => button.classList.remove('is-active'));
+    };
+
+    const setActiveSkill = (button) => {
+        const skillName = button.getAttribute('data-skill-name');
+        const skillLevel = Number(button.getAttribute('data-skill-level') || 0);
+        if (!skillName) return;
+
+        clearActive();
+        button.classList.add('is-active');
+        displayName.textContent = skillName;
+        setLevelState(skillLevel);
+    };
+
+    skillButtons.forEach((button) => {
+        button.addEventListener('mouseenter', () => setActiveSkill(button));
+        button.addEventListener('focus', () => setActiveSkill(button));
+        button.addEventListener('click', () => setActiveSkill(button));
+    });
+
+    const keyboardContainer = document.querySelector('.skills-keyboard');
+    if (keyboardContainer) {
+        keyboardContainer.addEventListener('mouseleave', () => {
+            clearActive();
+            displayName.textContent = defaultLabel;
+            setLevelState(0);
+        });
+    }
+}
+
 function initNavbarEntrance() {
     const body = document.body;
     const navItems = document.querySelectorAll('.nav-menu .nav-item');
@@ -455,27 +522,27 @@ function initVideoScrollEffect() {
         const windowHeight = window.innerHeight;
         const depthProgress = Math.max(0, Math.min(1, scrollY / (windowHeight * 1.8)));
         
-        // Calcola opacità: 1 (100%) in alto, 0.3 (30%) dopo aver scrollato una viewport
+        // Calcola opacità: 1 (100%) in alto, 0.75 (75%) dopo aver scrollato una viewport
         let opacity = 1 - (scrollY / windowHeight);
         
-        // Limita tra 0.3 e 1
-        opacity = Math.max(0.3, Math.min(1, opacity));
+        // Limita tra 0.75 e 1 per mantenere più dettagli
+        opacity = Math.max(0.75, Math.min(1, opacity));
         
         // Applica al video background
         videoBg.style.opacity = opacity;
 
         if (videoEl) {
-            const shiftY = depthProgress * 42;
-            const scale = 1 + (depthProgress * 0.12);
-            const saturation = 1 + (depthProgress * 0.18);
-            const contrast = 1 + (depthProgress * 0.08);
+            const shiftY = depthProgress * 18;
+            const scale = 1 + (depthProgress * 0.035);
+            const saturation = 1 + (depthProgress * 0.06);
+            const contrast = 1 + (depthProgress * 0.03);
 
             videoEl.style.setProperty('transform', `translate(-50%, calc(-50% + ${shiftY}px)) scale(${scale})`, 'important');
             videoEl.style.setProperty('filter', `saturate(${saturation}) contrast(${contrast})`, 'important');
         }
 
         if (overlayEl) {
-            overlayEl.style.opacity = `${0.88 + (depthProgress * 0.22)}`;
+            overlayEl.style.opacity = `${0.58 + (depthProgress * 0.1)}`;
         }
     });
     
